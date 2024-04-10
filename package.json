@@ -51,6 +51,7 @@
     "@types/supertest": "^6.0.2",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "daisyui": "^4.10.1",
     "esbuild": "^0.18.19",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -79,7 +80,9 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   },
   "browserslist": "> 2%, not dead"
 }
