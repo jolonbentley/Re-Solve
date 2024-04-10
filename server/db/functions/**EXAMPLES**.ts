@@ -1,5 +1,7 @@
-import db from './connection.ts'
-import { Fruit, FruitData } from '../../models/fruit.ts'
+import db from '../connection.ts'
+import { Fruit, FruitData } from '../../../models/users.ts'
+
+// **TODO** Remove before deployment - examples for development
 
 export async function getAllFruits() {
   const fruit = await db('fruit').select()
