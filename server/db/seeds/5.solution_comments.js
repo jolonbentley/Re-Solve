@@ -8,12 +8,14 @@ export async function seed(knex) {
   await knex('solution_comments').insert([
     {
       id: 1,
+      solution_id: 1,
       author_id: 1,
       comment: 'This is a comment',
       date: '2024-04-02 12:00:00',
     },
     {
       id: 2,
+      solution_id: 1,
       author_id: 1,
       comment: 'This is a comment',
       date: '2024-04-02 13:00:00',
