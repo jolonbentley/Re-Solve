@@ -1,119 +1,70 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import * as api from '../apis/apiClient'
 import { fetchChallenges } from '../apis/apiClient'
-import { Challenges } from '../../models/challenges'
 
 // export function AllChallenges() {
-//   const challengesFunc = async () => {
-//     const challenges = await api.fetchChallenges()
-//     console.log(challenges)
-//   }
-//   challengesFunc()
+//   const dummyChallenges: Challenge[] = [
+//     {
+//       id: 1,
+//       title: 'Addition',
+//       date: '2024-02-27 14:00:00',
+//       brief: 'A user was asked to write code to add two numbers together.',
+//       hints: 'none right now.',
+//       problem:
+//         'var a = 5\nvar b = 10\n\nfunction addition() {\n  let result = a + b\n  return result\n}',
+//       author_id: 1,
+//       upvotes: 3,
+//       downvotes: 0,
+//       difficulty: 'Easy',
+//     },
+//   ]
 
 export function AllChallenges() {
-  // Dummy data to use until we fetch real data
-  const dummyChallenges: Challenges[] = [
-    {
-      id: 1,
-      title: 'Addition',
-      date: '2024-02-27 14:00:00',
-      brief: 'A user was asked to write code to add two numbers together.',
-      hints: 'none right now.',
-      problem:
-        'var a = 5\nvar b = 10\n\nfunction addition() {\n  let result = a + b\n  return result\n}',
-      author_id: 1,
-      upvotes: 3,
-      downvotes: 0,
-      difficulty: 'Easy',
-    },
-  ]
+  const {
+    isLoading,
+    isError,
+    data: ChallengesData,
+  } = useQuery({
+    queryKey: ['challenges'],
+    queryFn: () => fetchChallenges(),
+  })
+  if (isLoading) {
+    return <h1>Loading...ChallengesDataPage</h1>
+  }
 
+  if (isError || !ChallengesData) {
+    return <h1>Error</h1>
+  }
   return (
     <div>
-      {dummyChallenges.map((challenge) => (
-        <div key={challenge.id}>
-          <table>
-            <td>{challenge.title}</td>
-            <td>{challenge.brief}</td>
-            <td></td>
-          </table>
-          <Link to={`/challenges/${challenge.id}`}>View Details</Link>
-        </div>
-      ))}
+      <table className="table border-separate space-y-6 text-sm text-gray-400">
+        <thead className="bg-yellow-500 text-white">
+          <tr>
+            <th className="p-3">Challenge</th>
+            <th className="p-3 text-left">Difficulty</th>
+            <th className="p-3 text-left">Upvote</th>
+            <th className="p-3 text-left">Downvotes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ChallengesData.map((challenge) => (
+            <tr key={challenge.id} className="bg-blue-200 lg:text-black">
+              <td className="p-3">
+                <span className="rounded-md bg-blue-400 px-2 text-gray-50">
+                  <Link to={`/challenges/${challenge.title}`}>
+                    {challenge.title}
+                  </Link>
+                </span>
+              </td>
+              <td className="p-3">{challenge.difficulty}</td>
+              <td className="p-3">{challenge.upvotes}</td>
+              <td className="p-3">{challenge.downvotes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
-
-//   const {
-//     isLoading,
-//     isError,
-//     data: groupsData,
-//   } = useQuery({
-//     queryKey: ['challenges'],
-//     queryFn: () => getAllChallenges(),
-//   })
-//   if (isLoading) {
-//     return <h1>Loading...AllChallengesPage</h1>
-//   }
-
-//   if (isError || !groupsData) {
-//     return <h1>Error</h1>
-//   }
-
-//   return (
-//     <>
-//       <h1>All groups</h1>
-//       <div className="p-24 flex flex-wrap items-center justify-center">
-//         {groupsData.map((challenges) => (
-//           <Link key={challenges.id} to={`/groups/${challenges.id}`}>
-//             <div
-//               key={challenges.id}
-//               className="flex-shrink-0 m-6 relative overflow-hidden mt-auto bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-1000 rounded-lg max-w-xs shadow-lg"
-//             >
-//               <svg
-//                 className="absolute bottom-0 left-0 mb-8 "
-//                 viewBox="0 0 375 283"
-//                 fill="none"
-//               >
-//                 <rect
-//                   x="159.52"
-//                   y="175"
-//                   width="152"
-//                   height="152"
-//                   rx="8"
-//                   transform="rotate(-45 159.52 175)"
-//                   fill="white"
-//                 />
-//                 <rect
-//                   y="107.48"
-//                   width="152"
-//                   height="152"
-//                   rx="8"
-//                   transform="rotate(-45 0 107.48)"
-//                   fill="white"
-//                 />
-//               </svg>
-//               <div className="relative pt-10 px-10 flex items-center justify-center">
-//                 <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"></div>
-//                 <img
-//                   className="relative w-40"
-//                   src={`/images/icons/${challenges.image}`}
-//                   alt={challenges.name}
-//                 />
-//               </div>
-//               <div className="relative text-black px-6 pb-6 mt-6">
-//                 <div className="flex justify-between">
-//                   <span className="block font-semibold text-xl">
-//                     {challenges.name}
-//                   </span>
-//                 </div>
-//               </div>
-//             </div>
-//           </Link>
-//         ))}
-//       </div>
-//     </>
-//   )
 
 export default AllChallenges

@@ -1,10 +1,10 @@
 import request from 'superagent'
-import { Challenges } from '../../models/challenges'
+import { Challenge } from '../../models/challenges'
 
-const rootUrl = 'api/v1/challenges'
+const rootUrl = '/api/v1/challenges'
 
-export async function fetchChallenges(): Promise<Challenges[]> {
-  const res = await request.get(rootUrl)
+export async function fetchChallenges(): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/all`)
   return res.body
 }
 
