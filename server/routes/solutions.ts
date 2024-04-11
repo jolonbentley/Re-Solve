@@ -3,7 +3,7 @@ import * as db from '../db/db-functions'
 
 const router = Router()
 
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const challenges = await db.getAllSolutions()
     res.json(challenges)
@@ -49,7 +49,7 @@ router.get('/comments', async (req, res) => {
 router.post('/comments', async (req, res) => {
   const comment = req.body
   try {
-    await db.saveComment(comment)
+    await db.saveSolutionComment(comment)
     res.status(201).send('Comment saved')
   } catch (error) {
     console.error(error)
@@ -61,7 +61,7 @@ router.patch('/comments/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   const updates = req.body
   try {
-    await db.updateComment(id, updates)
+    await db.updateSolutionComment(id, updates)
     res.status(200).send('Comment updated')
   } catch (error) {
     console.error(error)

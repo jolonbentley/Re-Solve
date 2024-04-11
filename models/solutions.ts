@@ -10,7 +10,7 @@ export interface Solution {
   downvotes: number
 }
 
-export interface SolutionComments {
+export interface SolutionComment {
   id: number
   solution_id: number
   author_id: number

@@ -1,20 +1,8 @@
 import connection from './connection'
-import { Challenge } from '../../models/challenges.ts'
-import { Solution, SolutionComments } from '../../models/solutions.ts'
+import { Challenge, ChallengeComment } from '../../models/challenges.ts'
+import { Solution, SolutionComment } from '../../models/solutions.ts'
 
 const db = connection
-
-export async function updateSolutionId(id: number, solutionId: number) {
-  return db('solution_comments')
-    .where('id', id)
-    .update({ solution_id: solutionId })
-}
-
-export async function updateFeaturedSolutionId(id: number, solutionId: number) {
-  return db('featured_solutions')
-    .where('id', id)
-    .update({ solution_id: solutionId })
-}
 
 export async function getAllChallenges() {
   return await db('challenges').select('*')
@@ -28,6 +16,14 @@ export async function getAllSolutionComments() {
   return await db('solution_comments').select('*')
 }
 
+export async function getAllChallengeComments() {
+  return await db('challenge_comments').select('*')
+}
+
+export async function getAllUsers() {
+  return await db('users').select('*')
+}
+
 export async function saveSolution(data: object): Promise<Solution[]> {
   return await db('solutions').insert([data])
 }
@@ -36,13 +32,40 @@ export async function updateSolution(id: number, updates: Partial<Solution>) {
   await db('solutions').where('id', id).update(updates)
 }
 
-export async function saveComment(data: object): Promise<SolutionComments[]> {
+export async function saveSolutionComment(
+  data: object,
+): Promise<SolutionComment[]> {
   return await db('solution_comments').insert([data])
 }
 
-export async function updateComment(
+export async function updateSolutionComment(
   id: number,
-  updates: Partial<SolutionComments>,
+  updates: Partial<SolutionComment>,
 ) {
   await db('solution_comments').where('id', id).update(updates)
 }
+
+export async function saveChallengeComment(
+  data: object,
+): Promise<ChallengeComment> {
+  return await db('challenge_comments').insert([data])
+}
+
+export async function updateChallengeComment(
+  id: number,
+  updates: Partial<ChallengeComment>,
+) {
+  return await db('challenge_comments').where('id', id).update(updates)
+}
+
+// export async function updateSolutionId(id: number, solutionId: number) {
+//   return db('solution_comments')
+//     .where('id', id)
+//     .update({ solution_id: solutionId })
+// }
+
+// export async function updateFeaturedSolutionId(id: number, solutionId: number) {
+//   return db('featured_solutions')
+//     .where('id', id)
+//     .update({ solution_id: solutionId })
+// }
