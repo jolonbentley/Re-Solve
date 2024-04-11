@@ -23,6 +23,28 @@ router.get('/comments', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const challenge = await db.getChallengeById(id)
+    res.json(challenge)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.get('/completed/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const completedChallenges = await db.getCompletedChallenges(id)
+    res.json(completedChallenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 router.post('/comments', async (req, res) => {
   const comment = req.body
   try {
