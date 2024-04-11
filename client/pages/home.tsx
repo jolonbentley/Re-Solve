@@ -1,5 +1,6 @@
 import AllChallenges from '../components/AvailableChallenges'
 import UserSignIn from '../components/SignIn/UserSignIn'
+import { CompletedChallenges } from '../components/CompletedChallenges'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <h2>Sign up today to get started with challenges</h2>
       <UserSignIn />
       <AllChallenges />
+      <CompletedChallenges />
     </div>
   )
 }
