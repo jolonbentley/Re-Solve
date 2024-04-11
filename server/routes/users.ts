@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { addUser, getUserByAuthID } from '../db/functions/users'
+import * as db from '../db/db-functions'
 
 const router = Router()
 
@@ -25,6 +26,16 @@ router.get('/getUser', async (req, res) => {
   } catch (error) {
     console.error(error)
     res.status(500).send("Failed to get user")
+  }
+})
+
+router.get('/getAllUsers', async (req, res) => {
+  try {
+    const users = await db.getAllUsers()
+    res.json(users)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
   }
 })
 
