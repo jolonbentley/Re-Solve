@@ -11,8 +11,6 @@ export default function SandboxConsole({ editorRef }) {
   const id = useParams().id
   const user = useUser().data
 
-  console.log(user)
-
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue()
     if (!sourceCode) return

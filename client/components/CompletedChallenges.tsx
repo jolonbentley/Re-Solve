@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { getCompletedChallenges } from '../apis/apiClient'
+import useUser from '../hooks/useUser'
 
 export function CompletedChallenges() {
-  const id = 3
+  const user = useUser().data
+  const id = user?.id
+
   const {
     isLoading,
     isError,
@@ -32,6 +35,7 @@ export function CompletedChallenges() {
               <th className="p-3 text-left">Difficulty</th>
               <th className="p-3 text-left">Upvote</th>
               <th className="p-3 text-left">Downvotes</th>
+              <th className="p-3 text-left">Solutions</th>
             </tr>
           </thead>
           <tbody>
@@ -39,7 +43,7 @@ export function CompletedChallenges() {
               <tr key={challenge.id} className="bg-blue-200 lg:text-black">
                 <td className="p-3">
                   <span className="rounded-md bg-blue-400 px-2 text-gray-50">
-                    <Link to={`/challenges/${challenge.title}`}>
+                    <Link to={`/challenge/${challenge.id}`}>
                       {challenge.title}
                     </Link>
                   </span>
@@ -47,6 +51,11 @@ export function CompletedChallenges() {
                 <td className="p-3">{challenge.difficulty}</td>
                 <td className="p-3">{challenge.upvotes}</td>
                 <td className="p-3">{challenge.downvotes}</td>
+                <td className="p-3">
+                  <span className="rounded-md bg-blue-400 px-2 text-gray-50">
+                    <Link to={`/solution/${challenge.id}`}>➡</Link>
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>
