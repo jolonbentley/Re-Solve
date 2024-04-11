@@ -15,6 +15,21 @@ export async function fetchSolutionDisBox(): Promise<SolutionComment[]> {
   return res.body
 }
 
+export async function addSolutionDisBox(
+  comment: SolutionComment,
+): Promise<SolutionComment[]> {
+  const res = await request
+    .post(`${rootUrl}/solutions/comments`)
+    .send({ comment })
+  return res.body
+}
+
+// export function getFruits(): Promise<string[]> {
+//   return request.get(rootUrl + '/fruits').then((res) => {
+//     return res.body.fruits
+//   })
+// }
+
 export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/completed/${id}`)
 
@@ -37,3 +52,4 @@ export async function getIncompleteChallenges(
   const res = await request.get(`${rootUrl}/challenges/incomplete/${id}`)
   return res.body
 }
+
