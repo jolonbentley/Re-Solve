@@ -1,7 +1,13 @@
-export default function ChallengeBrief() {
+import { ChallengeData } from '../../models/challenges'
+
+export default function ChallengeBrief({ data }: ChallengeData) {
+  console.log(data)
   return (
-    <div>
-      challenge that uses the route params to grab the correct challenge data
+    <div style={{ width: '500px', height: '75px', border: 'solid' }}>
+      <div>Challenge: {data.brief}</div>
+      <div>
+        <p>Hint: {data.hints}</p>
+      </div>
     </div>
   )
 }

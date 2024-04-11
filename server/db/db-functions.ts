@@ -9,7 +9,7 @@ export async function getAllChallenges() {
 }
 
 export async function getChallengeById(id: number) {
-  return await db('challenges').where('id', id).select('*')
+  return await db('challenges').where('id', id).select('*').first()
 }
 
 export async function getAllSolutions() {

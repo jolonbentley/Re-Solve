@@ -9,9 +9,7 @@ export default function SandboxConsole({ editorRef }) {
     if (!sourceCode) return
     try {
       const { run } = await executeCode(sourceCode)
-
       setOutput(run.output)
-      console.log("This is the console you're looking for", output)
     } catch (error) {
       console.log('There was an error', error)
     }

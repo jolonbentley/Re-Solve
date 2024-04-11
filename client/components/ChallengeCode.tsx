@@ -1,7 +1,15 @@
-export default function ChallengeCode() {
+import { ChallengeCode } from '../../models/challenges'
+
+export default function ChallengeCodebox({ code }: ChallengeCode) {
   return (
     <div>
-      challenge that uses the route params to grab the correct challenge data
+      <div>
+        <textarea
+          style={{ width: '500px', height: '800px', border: 'solid' }}
+          value={code}
+          readOnly
+        ></textarea>
+      </div>
     </div>
   )
 }

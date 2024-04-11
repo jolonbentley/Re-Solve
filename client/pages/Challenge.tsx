@@ -2,22 +2,39 @@ import { useParams } from 'react-router-dom'
 import ChallengeBrief from '../components/ChallengeBrief'
 import ChallengeCode from '../components/ChallengeCode'
 import ChallengeSandbox from '../components/ChallengeSandbox/ChallengeSandbox'
-import { useSpecificChallenge } from '../hooks/useChallenges'
+import { useQuery } from '@tanstack/react-query'
+import { getChallenge } from '../apis/apiClient'
 
 export default function Challenge() {
-  const id = useParams().id
+  const id = Number(useParams().id)
 
-  const challenge = useSpecificChallenge(id)
-  console.log(challenge)
+  const {
+    isLoading,
+    isError,
+    error,
+    data: challenge,
+  } = useQuery({
+    queryKey: ['challenge'],
+    queryFn: () => getChallenge(id),
+  })
+  if (isLoading) {
+    return <>Loading...</>
+  }
+  if (isError) {
+    return <div>There was an error, {String(error)}</div>
+  }
+  if (!challenge) {
+    return null
+  }
+  // console.log(challenge)
+  const code = challenge.problem
 
   return (
     <div>
-      <h1>Welcome to Re:Solve Challenge page</h1>
-      <ChallengeBrief />
-      <ChallengeCode />
+      <h1>Challenge: {challenge.title}</h1>
+      <ChallengeBrief data={challenge} />
+      <ChallengeCode code={code} />
       <ChallengeSandbox code={code} />
     </div>
   )
 }
-
-const code = 'console.log("Hellow World!")'

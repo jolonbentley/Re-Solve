@@ -1,15 +1,10 @@
-import Editor from '@monaco-editor/react'
 import SandboxEditor from './SandboxEditor'
-import SandboxConsole from './SandboxConsole'
+import { ChallengeCode } from '../../../models/challenges'
 
-interface ChallengeProps {
-  code: string
-}
-
-export default function ChallengeSandbox({ code }: ChallengeProps) {
+export default function ChallengeSandbox({ code }: ChallengeCode) {
   return (
     <div>
-      <div>
+      <div style={{ width: '500px', height: '800px', border: 'solid' }}>
         <SandboxEditor code={code} />
       </div>
     </div>
