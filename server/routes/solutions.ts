@@ -27,10 +27,10 @@ router.get('/challengesolution/:id', async (req, res) => {
 })
 
 router.post('/submit', async (req, res) => {
-  // const solution = req.body
+  const solution = req.body
   console.log(req.body)
   try {
-    // await db.saveSolution(solution)
+    await db.saveSolution(solution)
     res.status(201).send('Solution saved')
   } catch (error) {
     console.error(error)
