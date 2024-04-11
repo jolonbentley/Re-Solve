@@ -45,6 +45,7 @@ export function AllChallenges() {
             <th className="p-3 text-left">Difficulty</th>
             <th className="p-3 text-left">Upvote</th>
             <th className="p-3 text-left">Downvotes</th>
+            <th>Solutions</th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +53,7 @@ export function AllChallenges() {
             <tr key={challenge.id} className="bg-blue-200 lg:text-black">
               <td className="p-3">
                 <span className="rounded-md bg-blue-400 px-2 text-gray-50">
-                  <Link to={`/challenges/${challenge.title}`}>
+                  <Link to={`/challenge/${challenge.id}`}>
                     {challenge.title}
                   </Link>
                 </span>
@@ -60,6 +61,11 @@ export function AllChallenges() {
               <td className="p-3">{challenge.difficulty}</td>
               <td className="p-3">{challenge.upvotes}</td>
               <td className="p-3">{challenge.downvotes}</td>
+              <td className="p-3">
+                <span className="rounded-md bg-blue-400 px-2 text-gray-50">
+                  <Link to={`/solution/${challenge.id}`}>➡</Link>
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -17,7 +17,7 @@ export default function SolutionsModule({ id }: Id) {
     error,
     data: solutions,
   } = useQuery({
-    queryKey: ['solutions'],
+    queryKey: ['solutions', id],
     queryFn: () => getChallengeSolutions(id),
   })
   if (isLoading) {

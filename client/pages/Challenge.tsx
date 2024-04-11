@@ -14,7 +14,7 @@ export default function Challenge() {
     error,
     data: challenge,
   } = useQuery({
-    queryKey: ['challenge'],
+    queryKey: ['challenge', id],
     queryFn: () => getChallenge(id),
   })
   if (isLoading) {
