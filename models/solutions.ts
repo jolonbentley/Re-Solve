@@ -17,3 +17,11 @@ export interface SolutionComment {
   comment: string
   date: Date
 }
+
+export interface SolutionList {
+  data: Solution[]
+}
+
+export interface DisplaySolution {
+  data: Solution
+}

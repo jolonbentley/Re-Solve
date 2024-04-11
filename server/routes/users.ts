@@ -26,7 +26,7 @@ router.get('/getUser', checkJwt, async (req: JwtRequest, res) => {
     res.status(200).json(user)
   } catch (error) {
     console.error(error)
-    res.status(500).send("Failed to get user")
+    res.status(500).send('Failed to get user')
   }
 })
 

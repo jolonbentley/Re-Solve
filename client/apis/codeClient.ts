@@ -11,9 +11,3 @@ export async function executeCode(code) {
   const res = await request.post(`${rootUrl}/execute`).send(body)
   return res.body
 }
-
-// export function getFruits(): Promise<string[]> {
-//   return request.get(rootUrl + '/fruits').then((res) => {
-//     return res.body.fruits
-//   })
-// }

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { fetchChallenges } from '../apis/apiClient'
+import { getIncompleteChallenges } from '../apis/apiClient'
 
 // export function AllChallenges() {
 //   const dummyChallenges: Challenge[] = [
@@ -20,13 +20,14 @@ import { fetchChallenges } from '../apis/apiClient'
 //   ]
 
 export function AllChallenges() {
+  const id = 3
   const {
     isLoading,
     isError,
     data: ChallengesData,
   } = useQuery({
-    queryKey: ['challenges'],
-    queryFn: () => fetchChallenges(),
+    queryKey: ['icompleteChallenges'],
+    queryFn: () => getIncompleteChallenges(id),
   })
   if (isLoading) {
     return <h1>Loading...ChallengesDataPage</h1>
