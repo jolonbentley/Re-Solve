@@ -10,3 +10,11 @@ export interface Challenge {
   downvotes: number
   difficulty: string
 }
+
+export interface ChallengeComment {
+  id: number
+  challenge_id: number
+  author_id: number
+  comment: string
+  date: Date
+}

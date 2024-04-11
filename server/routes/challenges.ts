@@ -3,10 +3,43 @@ import * as db from '../db/db-functions'
 
 const router = Router()
 
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const challenges = await db.getAllChallenges()
     res.json(challenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.get('/comments', async (req, res) => {
+  try {
+    const comments = await db.getAllChallengeComments()
+    res.json(comments)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/comments', async (req, res) => {
+  const comment = req.body
+  try {
+    await db.saveChallengeComment(comment)
+    res.status(201).send('Comment saved')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/comments/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  const updates = req.body
+  try {
+    await db.updateChallengeComment(id, updates)
+    res.status(200).send('Comment updated')
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')

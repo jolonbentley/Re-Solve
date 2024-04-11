@@ -9,3 +9,11 @@ export interface Solution {
   upvotes: number
   downvotes: number
 }
+
+export interface SolutionComment {
+  id: number
+  solution_id: number
+  author_id: number
+  comment: string
+  date: Date
+}
