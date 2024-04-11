@@ -3,9 +3,16 @@ import LogIn from "./LogIn";
 import LogOut from "./LogOut";
 
 export default function UserSignIn() {
-  const { isAuthenticated, user, error, isLoading } = useAuth0();
-  console.log('user: ', user)
-  console.log('authed?: ', isAuthenticated)
+  const { isAuthenticated, error, isLoading, getAccessTokenSilently } = useAuth0();
+
+  const getAccessToken = async () => {
+    const accessToken = await getAccessTokenSilently();
+    return accessToken
+  }
+
+  const accessToken = getAccessToken();
+  console.log(accessToken);
+
   if (error) {
     return (
       <span>Error: {String(error)}</span>
