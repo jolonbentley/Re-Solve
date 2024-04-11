@@ -9,7 +9,7 @@ export async function getAllChallenges() {
 }
 
 export async function getChallengeById(id: number) {
-  return await db('challenges').where('id', id).select('*').first()
+  return await db('challenges').where('id', id).select('*')
 }
 
 export async function getAllSolutions() {
@@ -74,6 +74,14 @@ export async function getSolutionsForChallenge(id: number) {
     .join('solutions', 'challenges.id', 'solutions.challenge_id')
     .where('solutions.challenge_id', id)
     .select('solutions.*')
+}
+
+export async function getIncompleteChallenges(id: number) {
+  return await db('challenges')
+    .whereNotIn('id', function () {
+      this.select('challenge_id').from('solutions').where('author_id', id)
+    })
+    .select('*')
 }
 
 // export async function updateSolutionId(id: number, solutionId: number) {
