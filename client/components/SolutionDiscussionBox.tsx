@@ -16,7 +16,7 @@ export function SolutionDisBox() {
   })
 
   const mutation = useMutation({
-    mutationFn: (comment: { comment: string }) => addSolutionDisBox(comment),
+    mutationFn: (comment: string) => addSolutionDisBox(comment),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['solutions'] })
     },
@@ -28,7 +28,7 @@ export function SolutionDisBox() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    mutation.mutate({ comment: newComment })
+    mutation.mutate(newComment)
     setNewComment('')
   }
 
