@@ -25,4 +25,25 @@ router.patch('/feature', async (req, res) => {
   }
 })
 
+router.get('/all', async (req, res) => {
+  try {
+    const challenges = await db.getAllSolutions()
+    res.json(challenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/', async (req, res) => {
+  const solution = req.body
+  try {
+    await db.saveSolution(solution)
+    res.status(201).send('Solution saved')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router
