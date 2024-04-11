@@ -22,6 +22,8 @@ Small adjustments are to made within their own seperate branch.
 
 TailwindCSS + DaisyUI
 
+Monaco-Editor/react [https://www.npmjs.com/package/@monaco-editor/react]
+
 ## MVP Statement
 A platform that serves users with code solutions that are poorly written and non compliant with current coding standards, requirements or is using deprecated elements, with the challenge of refactoring these solutions, brining them in line with code compliance, requirements and modern technologies. 
 
