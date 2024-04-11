@@ -3,27 +3,21 @@ import LogIn from "./LogIn";
 import LogOut from "./LogOut";
 
 export default function UserSignIn() {
-  const { isAuthenticated, error, isLoading, getAccessTokenSilently } = useAuth0();
-
-  const getAccessToken = async () => {
-    const accessToken = await getAccessTokenSilently();
-    return accessToken
-  }
-
-  const accessToken = getAccessToken();
-  console.log(accessToken);
-
+  const { isAuthenticated, isLoading, error } = useAuth0();
+  // Check Auth0 error/isloading
   if (error) {
     return (
       <span>Error: {String(error)}</span>
     )
   }
-
   if (isLoading) {
     return (
       <span>Loading...</span>
     )
   }
 
-  return isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>
+  return (
+    <div>
+      {isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>}
+    </div>)
 }

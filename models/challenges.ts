@@ -18,3 +18,15 @@ export interface ChallengeComment {
   comment: string
   date: Date
 }
+
+export interface ChallengeCode {
+  code: string
+}
+
+export interface ChallengeBrief {
+  brief: string
+}
+
+export interface ChallengeData {
+  data: Challenge
+}

@@ -3,10 +3,23 @@ import * as db from '../db/db-functions'
 
 const router = Router()
 
+// '/api/v1/solutions'
+
 router.get('/', async (req, res) => {
   try {
     const challenges = await db.getAllSolutions()
     res.json(challenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.get('/challengesolution/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const solutions = await db.getSolutionsForChallenge(id)
+    res.json(solutions)
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')

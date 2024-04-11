@@ -3,15 +3,16 @@ import { User } from "../../models/users";
 
 const rootUrl = "/api/v1/users"
 
-export async function getUser(authID: string) {
+export async function getUser({ token } : { token: string }) {
   const user = await request.get(`${rootUrl}/getUser`)
-    .send({ authID }) // <- TO DO - Get from input
-  // TO DO - handle errors
+    .set('Authorization', `Bearer ${token}`)
   return user.body as User
 }
 
-export async function registerUser(authID: string, name: string) {
+export async function registerNewUser({ token, name } : { token: string , name: string | undefined}) {
   const response = await request.post(`${rootUrl}/addUser`)
-    .send({ authID, name })
+    .send({ name })
+    .set('Authorization', `Bearer ${token}`)
   return response
 }
+

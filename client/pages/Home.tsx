@@ -1,6 +1,7 @@
 import AllChallenges from '../components/AvailableChallenges'
 import UserSignIn from '../components/SignIn/UserSignIn'
 import SolutionDisBox from '../components/SolutionDiscussionBox'
+import { CompletedChallenges } from '../components/CompletedChallenges'
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <UserSignIn />
       <AllChallenges />
       <SolutionDisBox />
+      <CompletedChallenges />
     </div>
   )
 }
