@@ -21,6 +21,7 @@ Small adjustments are to made within their own seperate branch.
 ---
 
 TailwindCSS + DaisyUI
+
 Monaco-Editor/react [https://www.npmjs.com/package/@monaco-editor/react]
 
 ## MVP Statement
