@@ -8,7 +8,7 @@ interface ChallengeProps {
 
 export default function SandboxEditor({ code }: ChallengeProps) {
   const editorRef = useRef()
-  const [value, setValue] = useState(code.trim())
+  const [value, setValue] = useState(code)
 
   const onMount = (editor) => {
     editorRef.current = editor

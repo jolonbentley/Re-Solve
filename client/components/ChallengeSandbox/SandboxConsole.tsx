@@ -8,6 +8,7 @@ export default function SandboxConsole({ editorRef }) {
     const sourceCode = editorRef.current.getValue()
     if (!sourceCode) return
     try {
+      setOutput('Running Code...')
       const { run } = await executeCode(sourceCode)
       setOutput(run.output)
     } catch (error) {
