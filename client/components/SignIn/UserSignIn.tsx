@@ -1,19 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "./LogIn";
 import LogOut from "./LogOut";
-import { registerNewUser } from "../../apis/userAPI";
-import useUser from "../../hooks/useUser";
 
 export default function UserSignIn() {
-  const { isAuthenticated, error, isLoading, getAccessTokenSilently, user } = useAuth0();
-  const useUserResponse = useUser();
-  const userData = useUserResponse
-
-  const registerUser = async () => {
-    const token = await getAccessTokenSilently();
-    registerNewUser({ token , name: user?.name})
-  }
-
+  const { isAuthenticated, isLoading, error } = useAuth0();
   // Check Auth0 error/isloading
   if (error) {
     return (
@@ -29,6 +19,5 @@ export default function UserSignIn() {
   return (
     <div>
       {isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>}
-        <button className="btn bg-pink-300" onClick={registerUser}>Sign me up()</button>
-      </div>)
+    </div>)
 }

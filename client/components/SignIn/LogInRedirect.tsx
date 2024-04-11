@@ -22,7 +22,7 @@ export default function LoginRedirect() {
       }
     }
     res()
-  }, [navigate, user, auth0.user])
+  }, [navigate, user, auth0])
 
   return (
     <div>
