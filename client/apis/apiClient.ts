@@ -53,3 +53,8 @@ export async function getIncompleteChallenges(
   return res.body
 }
 
+export async function submitSolution(data) {
+  const res = await request.post(`${rootUrl}/solutions/submit`).send(data)
+  return res.body
+}
+

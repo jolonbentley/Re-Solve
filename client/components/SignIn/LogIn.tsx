@@ -1,9 +1,13 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function LogIn() {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuth0()
   const handleSignIn = () => {
-    loginWithRedirect( {authorizationParams: {redirectUri: `${window.location.origin}/register`}} )
+    loginWithRedirect({
+      authorizationParams: {
+        redirectUri: `${window.location.origin}/register`,
+      },
+    })
   }
 
   return (
@@ -11,7 +15,6 @@ export default function LogIn() {
       <button onClick={handleSignIn} className="btn">
         Log In
       </button>
-      <span className="ml-2">Click here to sign in!</span>
     </div>
   )
 }
