@@ -14,8 +14,7 @@ export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   return res.body
 }
 
-// export function getFruits(): Promise<string[]> {
-//   return request.get(rootUrl + '/fruits').then((res) => {
-//     return res.body.fruits
-//   })
-// }
+export async function getChallenge(id: number) {
+  const res = await request.get(`${rootUrl}/challenges/${id}`)
+  return res.body
+}
