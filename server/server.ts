@@ -4,12 +4,14 @@ import * as Path from 'node:path'
 // import fruitRoutes from './routes/**EXAMPLES**.ts'
 
 import solutionRoutes from './routes/solutions.ts'
+import userRoutes from './routes/users.ts'
 
 const server = express()
 
 server.use(express.json())
 
 server.use('/api/v1/solution', solutionRoutes)
+server.use('/api/v1/users', userRoutes)
 
 // **TODO** Set up routes for API calls on challenges, solutions and users
 // server.use('/api/v1/fruits', fruitRoutes)

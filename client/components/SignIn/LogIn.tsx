@@ -5,7 +5,7 @@ export default function LogIn() {
 
   return (
     <div className="flex flex-row content-center items-center">
-      <button onClick={() => loginWithRedirect()} className="btn ">
+      <button onClick={() => loginWithRedirect()} className="btn">
         Log In
       </button>
       <span className="ml-2">Click here to sign in!</span>
