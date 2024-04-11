@@ -1,12 +1,16 @@
 import { createRoutesFromElements, Route } from 'react-router-dom'
-import Home from './pages/home.tsx'
-import Challenge from './pages/challenge.tsx'
-import Solution from './pages/solution.tsx'
+import Home from './pages/Home.tsx'
+import Challenge from './pages/Challenge.tsx'
+import Solution from './pages/Solution.tsx'
+import App from './pages/App.tsx'
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<Home />}>
-    <Route path="/challenge" element={<Challenge />} />
-    <Route path="/solution" element={<Solution />} />
+  <Route path="/" element={<App />}>
+    <Route index element={<Home />} />
+    <Route path="/challenge/" element={<Challenge />} />
+    <Route path="/challenge/:id" element={<Challenge />} />
+    <Route path="/solution/" element={<Solution />} />
+    <Route path="/solution/:id" element={<Solution />} />
   </Route>,
 )
 

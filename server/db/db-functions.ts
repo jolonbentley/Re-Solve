@@ -8,6 +8,10 @@ export async function getAllChallenges() {
   return await db('challenges').select('*')
 }
 
+export async function getChallengeById(id: number) {
+  return await db('challenges').where('id', id).select('*').first()
+}
+
 export async function getAllSolutions() {
   return await db('solutions').select('*')
 }
@@ -56,6 +60,13 @@ export async function updateChallengeComment(
   updates: Partial<ChallengeComment>,
 ) {
   return await db('challenge_comments').where('id', id).update(updates)
+}
+
+export async function getCompletedChallenges(id: number) {
+  return await db('challenges')
+    .join('solutions', 'challenges.id', 'solutions.challenge_id')
+    .where('solutions.author_id', id)
+    .select('challenges.*')
 }
 
 // export async function updateSolutionId(id: number, solutionId: number) {
