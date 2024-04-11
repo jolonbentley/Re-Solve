@@ -5,13 +5,11 @@
 export function up(knex) {
   return knex.schema.createTable('solutions', function (table) {
     table.integer('id').primary()
-    table.varchar('title')
     table.datetime('date')
     table.text('body')
-    table.integer('author_id')
-    table.boolean('is_published')
-    table.integer('upvotes')
-    table.integer('downvotes')
+    table.integer('author_id').notNullable()
+    table.integer('upvotes').defaultTo(0)
+    table.integer('downvotes').defaultTo(0)
   })
 }
 

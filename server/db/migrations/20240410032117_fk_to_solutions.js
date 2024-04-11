@@ -4,7 +4,7 @@
  */
 export function up(knex) {
   return knex.schema.table('solutions', function (table) {
-    table.integer('challenge_id')
+    table.integer('challenge_id').notNullable()
     table
       .foreign('challenge_id')
       .references('challenges.id')

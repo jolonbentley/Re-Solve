@@ -27,7 +27,7 @@ router.get('/challengesolution/:id', async (req, res) => {
 })
 
 router.post('/submit', async (req, res) => {
-  const solution = req.body
+  const solution = { ...req.body, date: Date() }
   console.log(req.body)
   try {
     await db.saveSolution(solution)
