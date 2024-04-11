@@ -25,3 +25,10 @@ export async function getChallenge(id: number) {
   const res = await request.get(`${rootUrl}/challenges/${id}`)
   return res.body
 }
+
+export async function getIncompleteChallenges(
+  id: number,
+): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/challenges/incomplete/${id}`)
+  return res.body
+}
