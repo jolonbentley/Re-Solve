@@ -3,7 +3,11 @@ import { User } from '../../../models/users.ts'
 
 export async function addUser(authID: string, givenName: string) {
   // Check if user already exists in the DB.
-  // -- TO DO
+  const checkIfExists = await getUserByAuthID(authID);
+  if (checkIfExists) {
+    console.log('entry already found, not adding another one')
+    return
+  }
 
   // Add the new user to the DB.
   const userData = {
@@ -24,6 +28,6 @@ export async function addUser(authID: string, givenName: string) {
 
 export async function getUserByAuthID(auth_id: string) {
   const user = await db('users').where({ auth_id }).first()
-  // TO DO - Check if user exists
+  // TO DO - Check if user exists?
   return user as User
 }

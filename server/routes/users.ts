@@ -5,23 +5,24 @@ import checkJwt, { JwtRequest } from '../auth0'
 
 const router = Router()
 
-router.post('/addUser', checkJwt, async (req, res) => {
-  // Adds a user to the database, given their auth0 token
-  const { token } = req.body
+router.post('/addUser', checkJwt, async (req: JwtRequest, res) => {
+  // Adds a user to the database, given their auth0 authentication was supplied
   try {
-    await addUser(authID, name)
-    res.status(200).send(`User "${name}" was successfully added`)
+    const auth0Id = req.auth?.sub as string
+    const { name } = req.body
+    await addUser(auth0Id, name)
+    res.status(200).send(`User ${name} was successfully added`)
   } catch (error) {
     console.error(error)
-    res.status(500).send(`Failed to add user "${name}", ${error}`)
+    res.status(500).send(`Failed to add user "", ${error}`)
   }
 })
 
 router.get('/getUser', checkJwt, async (req: JwtRequest, res) => {
-  // Gets a user given their auth0 token
+  // Gets a user given their auth0 authentication was supplied
   try {
     const auth0Id = req.auth?.sub as string
-    const user = getUserByAuthID(auth0Id)
+    const user = await getUserByAuthID(auth0Id)
     res.status(200).json(user)
   } catch (error) {
     console.error(error)

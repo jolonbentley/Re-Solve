@@ -17,6 +17,18 @@ export async function seed(knex) {
       experience: 'Graduate software developer',
       profile_pic_url:
         'https://assets.coingecko.com/coins/images/34120/large/Phteve.jpeg?1704046341',
-    },
+    }
+    // {
+    //   id: 2,
+    //   auth_id: 'google-oauth2|102764997331230157818',
+    //   name: 'Lewis',
+    //   coolness: 8,
+    //   spaghetness: 6,
+    //   favourite_duck: 'Mallard',
+    //   about: 'A simple code kind of guy',
+    //   experience: 'Graduate software developer',
+    //   profile_pic_url:
+    //     'https://assets.coingecko.com/coins/images/34120/large/Phteve.jpeg?1704046341',
+    // }
   ])
 }

@@ -26,7 +26,6 @@ export default function Challenge() {
   if (!challenge) {
     return null
   }
-  // console.log(challenge)
   const code = challenge.problem
 
   return (
