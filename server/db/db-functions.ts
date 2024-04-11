@@ -69,6 +69,13 @@ export async function getCompletedChallenges(id: number) {
     .select('challenges.*')
 }
 
+export async function getSolutionsForChallenge(id: number) {
+  return await db('challenges')
+    .join('solutions', 'challenges.id', 'solutions.challenge_id')
+    .where('solutions.challenge_id', id)
+    .select('solutions.*')
+}
+
 export async function getIncompleteChallenges(id: number) {
   return await db('challenges')
     .whereNotIn('id', function () {

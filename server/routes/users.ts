@@ -4,6 +4,8 @@ import * as db from '../db/db-functions'
 
 const router = Router()
 
+// '/api/v1/users'
+
 router.post('/addUser', async (req, res) => {
   // Adds a user to the database, given their authID and name
   const { authID, name } = req.body
@@ -25,7 +27,7 @@ router.get('/getUser', async (req, res) => {
     res.status(200).send(user)
   } catch (error) {
     console.error(error)
-    res.status(500).send("Failed to get user")
+    res.status(500).send('Failed to get user')
   }
 })
 

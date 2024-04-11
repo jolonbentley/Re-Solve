@@ -26,6 +26,11 @@ export async function getChallenge(id: number) {
   return res.body
 }
 
+export async function getChallengeSolutions(id: number) {
+  const res = await request.get(`${rootUrl}/solutions/challengesolution/${id}`)
+  return res.body
+}
+
 export async function getIncompleteChallenges(
   id: number,
 ): Promise<Challenge[]> {
