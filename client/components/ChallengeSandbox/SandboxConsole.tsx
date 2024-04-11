@@ -33,6 +33,7 @@ export default function SandboxConsole({ editorRef }) {
       </button>
       <div>
         <textarea
+          style={{ width: '400px' }}
           value={output ? output : 'Click "Run Code" to see the output here'}
           readOnly
         ></textarea>

@@ -16,7 +16,7 @@ export async function fetchSolutionDisBox(): Promise<SolutionComment[]> {
 }
 
 export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
-  const res = await request.get(`${rootUrl}/challenges/${id}`)
+  const res = await request.get(`${rootUrl}/challenges/completed/${id}`)
 
   return res.body
 }
