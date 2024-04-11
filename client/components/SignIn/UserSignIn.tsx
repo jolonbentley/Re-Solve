@@ -1,17 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "./LogIn";
 import LogOut from "./LogOut";
+import { useUser } from "../../hooks/useUser";
+
 
 export default function UserSignIn() {
-  const { isAuthenticated, error, isLoading, getAccessTokenSilently } = useAuth0();
+  const { isAuthenticated, error, isLoading, getAccessTokenSilently, user } = useAuth0();
 
-  const getAccessToken = async () => {
-    const accessToken = await getAccessTokenSilently();
-    return accessToken
-  }
-
-  const accessToken = getAccessToken();
-  console.log(accessToken);
+  const userObject = useUser();
+  
 
   if (error) {
     return (
@@ -25,5 +22,10 @@ export default function UserSignIn() {
     )
   }
 
-  return isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>
+  console.log(userObject)
+  return (
+    <div>
+      {isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>}
+        <button className="btn bg-pink-300">Get User()</button>
+      </div>)
 }
