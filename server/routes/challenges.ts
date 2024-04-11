@@ -3,6 +3,8 @@ import * as db from '../db/db-functions'
 
 const router = Router()
 
+// '/api/v1/challenges'
+
 router.get('/', async (req, res) => {
   try {
     const challenges = await db.getAllChallenges()
