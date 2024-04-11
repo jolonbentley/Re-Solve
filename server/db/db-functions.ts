@@ -69,6 +69,10 @@ export async function getCompletedChallenges(id: number) {
     .select('challenges.*')
 }
 
+export async function getIncompleteChallenges(id: number) {
+  return await db('challenges')
+}
+
 // export async function updateSolutionId(id: number, solutionId: number) {
 //   return db('solution_comments')
 //     .where('id', id)
