@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clientId="mAs1w8QZsw16I6t0gclDbOltrfVLuUQ2"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        // audience: '',
+        audience: 'https://re-solve/api',
       }}
     >
       <QueryClientProvider client={queryClient}>
