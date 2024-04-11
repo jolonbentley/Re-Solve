@@ -1,5 +1,4 @@
 import AllChallenges from '../components/AvailableChallenges'
-import UserSignIn from '../components/SignIn/UserSignIn'
 import SolutionDisBox from '../components/SolutionDiscussionBox'
 import { CompletedChallenges } from '../components/CompletedChallenges'
 

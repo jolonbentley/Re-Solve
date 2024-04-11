@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import { executeCode } from '../../apis/codeClient'
 import { Editor } from '@monaco-editor/react'
+import useUser from '../../hooks/useUser'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { submitSolution } from '../../apis/apiClient'
+import { useParams } from 'react-router-dom'
 
 export default function SandboxConsole({ editorRef }) {
   const [output, setOutput] = useState(null)
+  const id = useParams().id
+  const user = useUser().data
+
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue()
     if (!sourceCode) return
@@ -16,11 +23,27 @@ export default function SandboxConsole({ editorRef }) {
     }
   }
 
+  const queryClient = useQueryClient()
+  const mutation = useMutation({
+    mutationFn: (data) => submitSolution(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['solutions'] })
+      // add redirect to solution page
+    },
+    onError: (error) => {
+      console.log('Submission Failed', error)
+    },
+  })
+
   const submitCode = async () => {
     const sourceCode = editorRef.current.getValue()
     if (!sourceCode) return
-    // useMutation to be written for posting solution to db,
-    // awaiting user implementation
+    const data = {
+      challenge_id: id,
+      body: sourceCode,
+      author_id: user?.id,
+    }
+    mutation.mutate(data)
   }
 
   return (

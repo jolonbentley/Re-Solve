@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { SolutionDisBox } from '../components/SolutionDiscussionBox'
 import SolutionsModule from '../components/SolutionsModule/Container'
-import { useQuery } from '@tanstack/react-query'
 
 export default function Solution() {
   const id = Number(useParams().id)

@@ -4,29 +4,30 @@ import { User } from '../../../models/users.ts'
 function duckGenerator(seed: string) {
   // Finds the users natural duck
   const ducks = [
-    'Mallard', 
-    'Scaup', 
-    'Northern Pintail', 
-    'Seagull', 
-    'Paradise Shelduck', 
+    'Mallard',
+    'Scaup',
+    'Northern Pintail',
+    'Seagull',
+    'Paradise Shelduck',
     'Pacific Black',
     'Shoveler',
     'Pateke',
     'Auckland Islands Teal',
-    'Grey Teal']
-  let hash = 0;
+    'Grey Teal',
+  ]
+  let hash = 0
   for (let i = 0; i < seed.length; i++) {
-    const char = seed.charCodeAt(i);
-    hash = (hash << 5) - hash + char;
+    const char = seed.charCodeAt(i)
+    hash = (hash << 5) - hash + char
     hash = hash & hash // Convert to 32 bit int
   }
-  hash = Math.abs(hash);
-  return ducks[hash % 10];
+  hash = Math.round(Math.abs(hash) / 4)
+  return ducks[hash % 10]
 }
 
 export async function addUser(authID: string, givenName: string) {
   // Check if user already exists in the DB.
-  const checkIfExists = await getUserByAuthID(authID);
+  const checkIfExists = await getUserByAuthID(authID)
   if (checkIfExists) {
     console.log('entry already found, not adding another one')
     return
@@ -40,11 +41,10 @@ export async function addUser(authID: string, givenName: string) {
     coolness: 0,
     spaghetness: 0,
     favourite_duck: duckGenerator(authID + givenName), // TO DO - generate randomly from a hash of user's authID + name
-    about: 'Write a story about yourself here', 
+    about: 'Write a story about yourself here',
     experience: '',
-    profile_pic_url:
-      '',
-  } 
+    profile_pic_url: '',
+  }
   const result = await db('users').insert(userData)
   return result
 }

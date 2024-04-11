@@ -37,3 +37,9 @@ export async function getIncompleteChallenges(
   const res = await request.get(`${rootUrl}/challenges/incomplete/${id}`)
   return res.body
 }
+
+export async function submitSolution(data) {
+  console.log(data)
+  const res = await request.post(`${rootUrl}/solutions/submit`).send(data)
+  return res.body
+}

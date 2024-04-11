@@ -27,7 +27,6 @@ export default function Challenge() {
     return null
   }
   const code = challenge.problem
-  console.log('page', challenge)
 
   return (
     <div>
