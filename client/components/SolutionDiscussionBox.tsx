@@ -1,9 +1,14 @@
 import React, { FormEvent, useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchSolutionDisBox, addSolutionDisBox } from '../apis/apiClient'
+import { useParams } from 'react-router-dom'
+import useUser from '../hooks/useUser'
 
 export function SolutionDisBox() {
   const [newComment, setNewComment] = useState('')
+  const idString = useParams().id as string
+  const idNumber = parseInt(idString)
+  const user = useUser().data
   const queryClient = useQueryClient()
 
   const {
@@ -12,11 +17,11 @@ export function SolutionDisBox() {
     data: solutionDisBox,
   } = useQuery({
     queryKey: ['solutions'],
-    queryFn: () => fetchSolutionDisBox(),
+    queryFn: () => fetchSolutionDisBox(idNumber),
   })
 
   const mutation = useMutation({
-    mutationFn: (comment: string) => addSolutionDisBox(comment),
+    mutationFn: (comment) => addSolutionDisBox(comment),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['solutions'] })
     },
@@ -28,7 +33,12 @@ export function SolutionDisBox() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    mutation.mutate(newComment)
+    const comment = {
+      comment: newComment,
+      solution_id: idNumber,
+      author_id: user.id,
+    }
+    mutation.mutate(comment)
     setNewComment('')
   }
 
@@ -57,6 +67,7 @@ export function SolutionDisBox() {
       <table className="table border-separate space-y-6 text-sm text-gray-400">
         <thead className="bg-yellow-500 text-white">
           <tr>
+            <th className="p-3 text-left">Author</th>
             <th className="p-3 text-left">Comment</th>
             <th className="p-3 text-left">Date</th>
           </tr>
@@ -64,6 +75,7 @@ export function SolutionDisBox() {
         <tbody>
           {solutionDisBox.map((solution) => (
             <tr key={solution.id} className="bg-blue-200 lg:text-black">
+              <td className="p-3">{solution.name}</td>
               <td className="p-3">{solution.comment}</td>
               <td className="p-3">{solution.date}</td>
             </tr>
