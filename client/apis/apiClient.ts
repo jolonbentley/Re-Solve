@@ -10,17 +10,24 @@ export async function fetchChallenges(): Promise<Challenge[]> {
   return res.body
 }
 
-export async function fetchSolutionDisBox(): Promise<SolutionComment[]> {
-  const res = await request.get(`${rootUrl}/solutions/comments`)
+export async function fetchSolutionDisBox(id: number) {
+  const res = await request.get(`${rootUrl}/solutions/comments/${id}`)
   return res.body
 }
 
-export async function addSolutionDisBox(
-  comment: SolutionComment,
-): Promise<SolutionComment[]> {
+// export async function addSolutionDisBox(
+//   comment: SolutionComment,
+// ): Promise<SolutionComment[]> {
+//   const res = await request
+//     .post(`${rootUrl}/solutions/comments`)
+//     .send({ comment })
+//   return res.body
+// }
+
+export async function addSolutionDisBox(commentData: object) {
   const res = await request
     .post(`${rootUrl}/solutions/comments`)
-    .send({ comment })
+    .send(commentData)
   return res.body
 }
 
@@ -57,4 +64,3 @@ export async function submitSolution(data) {
   const res = await request.post(`${rootUrl}/solutions/submit`).send(data)
   return res.body
 }
-

@@ -12,6 +12,19 @@ export async function getChallengeById(id: number) {
   return await db('challenges').where('id', id).select('*').first()
 }
 
+export async function getSolutionCommentsById(id: number) {
+  return await db('solution_comments')
+    .join('solutions', 'solution_comments.solution_id', 'solutions.id')
+    .join('users', 'users.id', 'solution_comments.author_id')
+    .where('solution_comments.solution_id', id)
+    .select(
+      'solution_comments.id',
+      'users.name',
+      'solution_comments.comment',
+      'solution_comments.date',
+    )
+}
+
 export async function getAllSolutions() {
   return await db('solutions').select('*')
 }
