@@ -36,8 +36,9 @@ export default function Challenge() {
       <HeadingBlockSecondary>Challenge: {challenge.title}</HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
-        <ChallengeCode code={code} />
+        
         <ChallengeSandbox code={code} />
+        <ChallengeCode code={code} />
       </div>
 
     </ChallengeContainer>

@@ -5,7 +5,7 @@ import { getIncompleteChallenges } from "../../apis/apiClient"
 import { getCompletedChallenges } from "../../apis/apiClient"
 import useUser from "../../hooks/useUser"
 
-export default function AvailableChallenges() {
+export default function CompletedChallenges() {
   const user = useUser().data
   const id = user?.id
 

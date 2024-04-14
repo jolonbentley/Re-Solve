@@ -19,9 +19,6 @@ export default function UserSignIn() {
 
   return (
     <div className="content-center">
-      <Link to="/challenges/">
-        <button className="btn">Challenges</button>
-      </Link>
       {isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>}
     </div>)
 }

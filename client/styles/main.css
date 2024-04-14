@@ -137,3 +137,61 @@ label,
 input {
   font-family: sans-serif;
 }
+/* Footer */
+/* Footer container */
+.footer {
+  background-color: rgb(23 23 23);
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Footer content container */
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+/* Title */
+.title {
+  font-size: 1.2rem;
+  color: goldenrod;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Footer text */
+.footer-text {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Copyright text */
+.copyright {
+  color: burlywood;
+}
+
+/* Links */
+.links {
+  margin-top: 5px;
+  color: lightskyblue;
+}
+
+.links .link {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.links .link:hover {
+  color: goldenrod;
+}
