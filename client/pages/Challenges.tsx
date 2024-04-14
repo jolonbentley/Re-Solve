@@ -1,19 +1,15 @@
-import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { getIncompleteChallenges } from '../apis/apiClient'
-import useUser from '../hooks/useUser'
+import { useQuery } from '@tanstack/react-query'
+import { fetchChallenges } from '../apis/apiClient'
 
-export function AllChallenges() {
-  const user = useUser().data
-  const id = user?.id
-
+export default function Challenges() {
   const {
     isLoading,
     isError,
     data: ChallengesData,
   } = useQuery({
-    queryKey: ['incompleteChallenges'],
-    queryFn: () => getIncompleteChallenges(id),
+    queryKey: ['AllChallenges'],
+    queryFn: () => fetchChallenges(),
   })
   if (isLoading) {
     return <h1>Loading...ChallengesDataPage</h1>
@@ -25,8 +21,9 @@ export function AllChallenges() {
   return (
     <div>
       <div>
-        <Link to={`/challenge`}>
-          <h1>Available Challenges</h1>
+        <h1>Challenges</h1>
+        <Link to={`/`}>
+          <button>Back</button>
         </Link>
       </div>
       <div>
@@ -66,5 +63,3 @@ export function AllChallenges() {
     </div>
   )
 }
-
-export default AllChallenges

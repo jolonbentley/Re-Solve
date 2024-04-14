@@ -49,13 +49,6 @@ export default function SandboxConsole({ editorRef }) {
 
   return (
     <div>
-      <h2> Output </h2>
-      <button className="btn" onClick={runCode}>
-        Run Code
-      </button>
-      <button className="btn" onClick={submitCode}>
-        Submit Code
-      </button>
       <div>
         <Editor
           height="20vh"
@@ -73,6 +66,12 @@ export default function SandboxConsole({ editorRef }) {
           }}
         />
       </div>
+      <button className="btn" onClick={runCode}>
+        Run Code
+      </button>
+      <button className="btn" onClick={submitCode}>
+        Submit Code
+      </button>
     </div>
   )
 }
