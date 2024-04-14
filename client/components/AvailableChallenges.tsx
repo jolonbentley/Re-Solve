@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { getIncompleteChallenges } from '../apis/apiClient'
+import useUser from '../hooks/useUser'
 
 export function AllChallenges() {
-  const id = 3
+  const user = useUser().data
+  const id = user?.id
+
   const {
     isLoading,
     isError,
     data: ChallengesData,
   } = useQuery({
-    queryKey: ['icompleteChallenges'],
+    queryKey: ['incompleteChallenges'],
     queryFn: () => getIncompleteChallenges(id),
   })
   if (isLoading) {
