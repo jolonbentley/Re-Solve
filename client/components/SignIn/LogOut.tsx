@@ -9,7 +9,7 @@ export default function LogOut() {
         onClick={() =>
           logout({ logoutParams: { returnTo: window.location.origin } })
         }
-        className="btn"
+        className="btn bg-accent text-accent-content drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
       >
         Log Out
       </button>

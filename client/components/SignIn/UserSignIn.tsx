@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "./LogIn";
 import LogOut from "./LogOut";
+import { Link } from "react-router-dom";
 
 export default function UserSignIn() {
   const { isAuthenticated, isLoading, error } = useAuth0();
@@ -17,7 +18,7 @@ export default function UserSignIn() {
   }
 
   return (
-    <div>
+    <div className="content-center">
       {isAuthenticated ? <LogOut></LogOut> : <LogIn></LogIn>}
     </div>)
 }

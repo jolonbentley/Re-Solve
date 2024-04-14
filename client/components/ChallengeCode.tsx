@@ -14,7 +14,7 @@ export default function ChallengeCodebox({ code }: ChallengeCode) {
           options={{
             fontSize: 16,
             minimap: {
-              enabled: code.length > 200 ? true : false,
+              enabled: code.length > 2000 ? true : false, // This is checking for 2000 characters, not 2000 lines
             },
             contextmenu: true,
             readOnly: true,

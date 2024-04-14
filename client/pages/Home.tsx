@@ -1,14 +1,17 @@
 import AllChallenges from '../components/AvailableChallenges'
 import SolutionDisBox from '../components/SolutionDiscussionBox'
-import { CompletedChallenges } from '../components/CompletedChallenges'
+import CompletedChallenges from '../components/ChallengesMenu/CompletedChallenges'
+import Challenges from './Challenge'
+import GenericContainer from '../components/BuildingBlocks/GenericContainer'
+import AvailableChallenges from '../components/ChallengesMenu/AvailableChallenges'
 
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to Re:Solve</h1>
-      <h2>Sign up today to get started with challenges</h2>
-      <AllChallenges />
-      <CompletedChallenges />
+      <GenericContainer>
+        <AvailableChallenges />
+        <CompletedChallenges />
+      </GenericContainer>
     </div>
   )
 }

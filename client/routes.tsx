@@ -1,6 +1,7 @@
 import { createRoutesFromElements, Route } from 'react-router-dom'
 import Home from './pages/Home.tsx'
 import Challenge from './pages/Challenge.tsx'
+// import Challenges from './pages/Challenges.tsx'
 import Solution from './pages/Solution.tsx'
 import App from './pages/App.tsx'
 import LoginRedirect from './components/SignIn/LogInRedirect.tsx'
