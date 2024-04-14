@@ -64,3 +64,8 @@ export async function submitSolution(data) {
   const res = await request.post(`${rootUrl}/solutions/submit`).send(data)
   return res.body
 }
+
+export async function submitProblem(data) {
+  const res = await request.post(`${rootUrl}/challenges/submit`).send(data)
+  return res.body
+}

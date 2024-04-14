@@ -108,3 +108,7 @@ export async function getIncompleteChallenges(id: number) {
 //     .where('id', id)
 //     .update({ solution_id: solutionId })
 // }
+
+export async function submitNewChallenge(data: object) {
+  return await db('challenges').insert([data])
+}
