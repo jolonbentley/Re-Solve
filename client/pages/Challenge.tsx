@@ -1,9 +1,12 @@
 import { useParams } from 'react-router-dom'
-import ChallengeBrief from '../components/ChallengeBrief'
+import ChallengeBrief from '../components/ChallengesMenu/ChallengeBrief'
 import ChallengeCode from '../components/ChallengeCode'
 import ChallengeSandbox from '../components/ChallengeSandbox/ChallengeSandbox'
 import { useQuery } from '@tanstack/react-query'
 import { getChallenge } from '../apis/apiClient'
+import ChallengeContainer from '../components/BuildingBlocks/ChallengeContainer'
+import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
+import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
 
 export default function Challenge() {
   const id = Number(useParams().id)
@@ -29,11 +32,14 @@ export default function Challenge() {
   const code = challenge.problem
 
   return (
-    <div>
-      <h1>Challenge: {challenge.title}</h1>
+    <ChallengeContainer>
+      <HeadingBlockSecondary>Challenge: {challenge.title}</HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
-      <ChallengeCode code={code} />
-      <ChallengeSandbox code={code} />
-    </div>
+      <div className="flex flex-row justify-center">
+        <ChallengeCode code={code} />
+        <ChallengeSandbox code={code} />
+      </div>
+
+    </ChallengeContainer>
   )
 }

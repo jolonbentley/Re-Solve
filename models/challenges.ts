@@ -2,9 +2,9 @@ export interface Challenge {
   id: number
   title: string
   date: Date
-  brief: Text
-  hints: Text
-  problem: Text
+  brief: string
+  hints: string
+  problem: string
   author_id: number
   upvotes: number
   downvotes: number
