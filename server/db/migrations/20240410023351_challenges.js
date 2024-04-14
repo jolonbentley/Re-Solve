@@ -11,8 +11,8 @@ export function up(knex) {
     table.text('hints')
     table.text('problem')
     table.integer('author_id')
-    table.integer('upvotes')
-    table.integer('downvotes')
+    table.integer('upvotes').defaultTo(0)
+    table.integer('downvotes').defaultTo(0)
     table.string('difficulty')
   })
 }
