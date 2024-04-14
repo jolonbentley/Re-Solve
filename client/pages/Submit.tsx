@@ -41,7 +41,6 @@ export default function Submit() {
   ) => {
     const { name, value } = event.currentTarget
     setSubmission((prev) => ({ ...prev, [name]: value }))
-    console.log(submission)
   }
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {

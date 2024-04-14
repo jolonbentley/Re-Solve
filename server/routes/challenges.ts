@@ -83,7 +83,6 @@ router.patch('/comments/:id', async (req, res) => {
 
 router.post('/submit', async (req, res) => {
   const data = { ...req.body, date: Date() }
-  console.log(data)
   try {
     await db.submitNewChallenge(data)
     res.status(201).send('Challenge submitted')
