@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchSolutionDisBox, addSolutionDisBox } from '../apis/apiClient'
 import { useParams } from 'react-router-dom'
 import useUser from '../hooks/useUser'
+import HeadingBlock from './BuildingBlocks/HeadingBlock'
 
 export function SolutionDisBox() {
   const [newComment, setNewComment] = useState('')
@@ -54,34 +55,29 @@ export function SolutionDisBox() {
     <div>
       <div>
         <input
-          className=" text-gray-400"
+          className=" input input-bordered w-full max-w-xs"
           type="text"
           value={newComment}
           onChange={handleChange}
           placeholder="Add new comment"
         />
-        <button className="bn5" onClick={handleSubmit}>
+        <button
+          className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-300"
+          onClick={handleSubmit}
+        >
           Add Comment
         </button>
       </div>
-      <table className="table border-separate space-y-6 text-sm text-gray-400">
-        <thead className="bg-yellow-500 text-white">
-          <tr>
-            <th className="p-3 text-left">Author</th>
-            <th className="p-3 text-left">Comment</th>
-            <th className="p-3 text-left">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {solutionDisBox.map((solution) => (
-            <tr key={solution.id} className="bg-blue-200 lg:text-black">
-              <td className="p-3">{solution.name}</td>
-              <td className="p-3">{solution.comment}</td>
-              <td className="p-3">{solution.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {solutionDisBox.map((solution) => (
+        <div
+          key={solution.id}
+          className="my-2 grid grid-cols-4 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl"
+        >
+          <span className="text-lg font-bold">{solution.name}</span>
+          <span className="text-lg font-bold">{solution.comment}</span>
+          <span className="text-lg font-bold">{solution.date}</span>
+        </div>
+      ))}
     </div>
   )
 }
