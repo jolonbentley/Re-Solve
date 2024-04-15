@@ -8,7 +8,7 @@ export function up(knex) {
     table.integer('solution_id')
     table.integer('author_id')
     table.string('comment')
-    table.datetime('date')
+    table.datetime('date').notNullable()
   })
 }
 
