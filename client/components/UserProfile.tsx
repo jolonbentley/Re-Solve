@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import useUser from '../hooks/useUser'
 import { useQuery } from '@tanstack/react-query'
 import { getUserById } from '../apis/userAPI'
 
@@ -11,9 +10,9 @@ export function UserProfile() {
     isLoading,
     isError,
     error,
-    data: User,
+    data: user,
   } = useQuery({
-    queryFn: getUserById(id),
+    queryFn: () => getUserById(id),
     queryKey: ['user', id],
   })
 

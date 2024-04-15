@@ -25,6 +25,7 @@ export async function registerNewUser({
 }
 
 export async function getUserById(id: number) {
+  console.log('api hit,', id)
   const res = await request.get(`${rootUrl}/${id}`)
   return res.body
 }

@@ -4,6 +4,10 @@ export function MyProfile() {
   const user = useUser().data
   const id = Number(user?.id)
 
+  // useState for edit buttons
+  // useMutation for posting changes
+  // handleChange/handleSubmit/handleSelect functions etc.
+
   return (
     <div>
       <div>

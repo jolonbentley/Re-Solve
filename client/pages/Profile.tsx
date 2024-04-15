@@ -22,13 +22,13 @@ export default function Profile() {
   // what other options are useful?
 
   if (!user) {
-    return <div>User Does not exist.</div>
+    return <div>Loading User...</div>
   }
 
   return (
     <div>
       <h1>Profile</h1>
-      {id === user.id ? <UserProfile /> : <MyProfile />}
+      {id === user.id ? <MyProfile /> : <UserProfile />}
     </div>
   )
 }
