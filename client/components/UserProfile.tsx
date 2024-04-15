@@ -26,6 +26,8 @@ export function UserProfile() {
 
   console.log(user)
 
+  // NEED TO ADD THEIR SOLUTIONS TABLE TO THEIR PROFILE
+
   return (
     <div>
       <div>
@@ -42,6 +44,9 @@ export function UserProfile() {
           <li>Spaghetness: {user?.spaghetness}</li>
           <li>Favourite Duck: {user?.favourite_duck}</li>
         </ul>
+      </div>
+      <div>
+        <h2>Submitted Solutions</h2>
       </div>
     </div>
   )

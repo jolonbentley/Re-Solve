@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import { submitProblem } from '../apis/apiClient'
 import useUser from '../hooks/useUser'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Submit() {
   const [submission, setSubmission] = useState({
@@ -82,7 +83,7 @@ export default function Submit() {
           value={submission.difficulty}
         >
           <option value="Easy">Easy</option>
-          <option value="Moderate">Moderate</option>
+          <option value="Medium">Medium</option>
           <option value="Hard">Hard</option>
         </select>
         <textarea

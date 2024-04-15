@@ -1,17 +1,20 @@
+import { useState } from 'react'
 import useUser from '../hooks/useUser'
+import { Link } from 'react-router-dom'
 
 export function MyProfile() {
   const user = useUser().data
   const id = Number(user?.id)
 
-  // useState for edit buttons
-  // useMutation for posting changes
-  // handleChange/handleSubmit/handleSelect functions etc.
-
   return (
     <div>
       <div>
         <h2>Profile</h2>
+      </div>
+      <div>
+        <Link to="/profile/edit">
+          <button>Edit Profile</button>
+        </Link>
       </div>
       <div>
         <img src={user?.profile_pic_url} alt="user portrait" />

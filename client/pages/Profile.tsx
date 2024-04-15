@@ -6,10 +6,7 @@ import { MyProfile } from '../components/MyProfile'
 export default function Profile() {
   // Check is this is the logged in users, page
   const id = Number(useParams().id)
-  console.log(id)
-
   const user = useUser().data
-  console.log(user)
 
   // check id's against each other.
 
