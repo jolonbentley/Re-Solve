@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * TODO: replace domain, clientId, and audience
      */
     <Auth0Provider
-      domain="dev-2va35aej5odvvteq.us.auth0.com"
-      clientId="mAs1w8QZsw16I6t0gclDbOltrfVLuUQ2"
+      domain="dev-j8umuew6o1wcbcfm.au.auth0.com"
+      clientId="a8Khm2fTSN1fN8DFk6MJ4M2qJUm78eAJ"
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: 'https://re-solve/api',

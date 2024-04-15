@@ -7,6 +7,7 @@ export async function getUser({ token }: { token: string }) {
   const user = await request
     .get(`${rootUrl}/getUser`)
     .set('Authorization', `Bearer ${token}`)
+  console.log(user)
   return user.body as User
 }
 
@@ -21,6 +22,7 @@ export async function registerNewUser({
     .post(`${rootUrl}/addUser`)
     .send({ name })
     .set('Authorization', `Bearer ${token}`)
+  console.log(response)
   return response
 }
 
