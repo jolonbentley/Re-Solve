@@ -40,4 +40,15 @@ router.get('/getAllUsers', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const user = await db.getUserById(id)
+    res.json(user)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router

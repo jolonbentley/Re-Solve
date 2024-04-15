@@ -112,3 +112,7 @@ export async function getIncompleteChallenges(id: number) {
 export async function submitNewChallenge(data: object) {
   return await db('challenges').insert([data])
 }
+
+export async function getUserById(id: number) {
+  return await db('users').where('id', id).select('*').first()
+}
