@@ -31,6 +31,8 @@ tr th:nth-child(1) {
   font-style: normal;
 }
 
+.editor-wrapper .monaco-editor, .editor-wrapper .overflow-guard { border-radius: 10px; }
+
 /* body {
   font-family: 'Kanit'
 } */
