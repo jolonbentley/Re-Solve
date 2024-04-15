@@ -122,3 +122,16 @@ export async function getUserById(id: number) {
 export async function updateUserProfile(id: number, updates: Partial<User>) {
   return await db('users').where('id', id).update(updates)
 }
+
+export async function checkForSolution(
+  user: number,
+  challenge: number,
+): Promise<Boolean> {
+  const result = await db('solutions')
+    .where('author_id', user)
+    .select('*')
+    .where('challenge_id', challenge)
+    .count('author_id as count')
+    .first()
+  return result.count > 0
+}

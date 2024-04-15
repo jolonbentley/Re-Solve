@@ -26,12 +26,21 @@ router.get('/challengesolution/:id', async (req, res) => {
   }
 })
 
+// ADD A CHECK FOR IF USER HAS A SOLUTION
+
 router.post('/submit', async (req, res) => {
   const solution = { ...req.body, date: Date() }
-  console.log(req.body)
+  const userId = solution.author_id
+  const challengeId = solution.challenge_id
+  const check = await db.checkForSolution(userId, challengeId)
+
   try {
-    await db.saveSolution(solution)
-    res.status(201).send('Solution saved')
+    if (check === false) {
+      await db.saveSolution(solution)
+      res.status(201).send('Solution saved')
+    } else {
+      res.status(401).send('You have already submitted a solution')
+    }
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')
