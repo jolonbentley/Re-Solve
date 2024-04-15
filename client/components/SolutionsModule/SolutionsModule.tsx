@@ -35,9 +35,13 @@ export default function SolutionsModule({ id }: Id) {
   }
 
   return (
-    <div>
-      <SolutionsList data={solutions} change={handleState} />
-      <SolutionDisplay data={solutions[output]} />
+    <div className="flex flex-row">
+      <div className="w-1/2">
+        <SolutionsList data={solutions} change={handleState} />
+      </div>
+      <div className="w-1/2">
+        <SolutionDisplay data={solutions[output]} />
+      </div>
     </div>
   )
 }

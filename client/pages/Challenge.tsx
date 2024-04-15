@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import ChallengeBrief from '../components/ChallengesMenu/ChallengeBrief'
-import ChallengeCode from '../components/ChallengeCode'
+import ChallengeCode from '../components/ChallengeCodebox'
 import ChallengeSandbox from '../components/ChallengeSandbox/ChallengeSandbox'
 import { useQuery } from '@tanstack/react-query'
 import { getChallenge } from '../apis/apiClient'
