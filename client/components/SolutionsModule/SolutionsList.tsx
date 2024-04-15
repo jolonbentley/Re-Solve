@@ -14,7 +14,7 @@ export default function SolutionsList({ data, change }: Props) {
   const handleClick = (index: number) => {
     change(index)
   }
-  console.log('soldata 🧙🏻', solutionsData)
+
   return (
     <div>
       {solutionsData.map((solution, index) => {
