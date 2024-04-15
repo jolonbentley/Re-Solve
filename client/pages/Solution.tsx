@@ -6,21 +6,22 @@ import { useQuery } from '@tanstack/react-query'
 import { getChallenge } from '../apis/apiClient'
 import ChallengePreview from '../components/SolutionsModule/ChallengePreview'
 import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
+import GenericContainer from '../components/BuildingBlocks/GenericContainer'
 
 export default function Solution() {
   const id = Number(useParams().id)
-  
-  // Get challenge information
 
+  // Get challenge information
 
   return (
     <ChallengeContainer>
-      <ChallengePreview id={id}/>
+      <ChallengePreview id={id} />
       <HeadingBlock>Solutions</HeadingBlock>
       <SolutionsModule id={id} />
-      <SolutionDisBox />
 
+      <GenericContainer>
+        <SolutionDisBox />
+      </GenericContainer>
     </ChallengeContainer>
-  
   )
 }
