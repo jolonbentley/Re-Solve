@@ -26,8 +26,6 @@ router.get('/challengesolution/:id', async (req, res) => {
   }
 })
 
-// ADD A CHECK FOR IF USER HAS A SOLUTION
-
 router.post('/submit', async (req, res) => {
   const solution = { ...req.body, date: Date() }
   const userId = solution.author_id

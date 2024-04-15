@@ -89,6 +89,8 @@ export async function getSolutionsForChallenge(id: number) {
     .join('solutions', 'challenges.id', 'solutions.challenge_id')
     .where('solutions.challenge_id', id)
     .select('solutions.*')
+    .join('users', 'solutions.author_id', 'users.id')
+    .select('users.name as author')
 }
 
 export async function getIncompleteChallenges(id: number) {
