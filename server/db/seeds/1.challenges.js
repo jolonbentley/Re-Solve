@@ -57,7 +57,7 @@ export async function seed(knex) {
       author_id: 1,
       upvotes: 5,
       downvotes: 0,
-      difficulty: 'Moderate',
+      difficulty: 'Medium',
     },
   ])
 }

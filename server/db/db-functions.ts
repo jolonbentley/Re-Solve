@@ -1,6 +1,8 @@
 import connection from './connection'
 import { Challenge, ChallengeComment } from '../../models/challenges.ts'
 import { Solution, SolutionComment } from '../../models/solutions.ts'
+import { User } from '../../models/users.ts'
+import { BIND } from 'superagent'
 
 const db = connection
 
@@ -111,4 +113,12 @@ export async function getIncompleteChallenges(id: number) {
 
 export async function submitNewChallenge(data: object) {
   return await db('challenges').insert([data])
+}
+
+export async function getUserById(id: number) {
+  return await db('users').where('id', id).select('*').first()
+}
+
+export async function updateUserProfile(id: number, updates: Partial<User>) {
+  return await db('users').where('id', id).update(updates)
 }

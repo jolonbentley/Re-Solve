@@ -40,4 +40,29 @@ router.get('/getAllUsers', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const user = await db.getUserById(id)
+    res.json(user)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/edit', async (req, res) => {
+  const id = parseInt(req.body.author_id)
+  const updates = req.body
+  delete updates.author_id
+  console.log(updates, id)
+  try {
+    await db.updateUserProfile(id, updates)
+    res.status(200).send('User profile updated')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router

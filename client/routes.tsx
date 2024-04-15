@@ -6,6 +6,8 @@ import App from './pages/App.tsx'
 import LoginRedirect from './components/SignIn/LogInRedirect.tsx'
 import Challenges from './pages/Challenges.tsx'
 import Submit from './pages/Submit.tsx'
+import Profile from './pages/Profile.tsx'
+import EditProfile from './components/EditProfile.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
@@ -16,6 +18,8 @@ export const routes = createRoutesFromElements(
     <Route path="/solution/" element={<Solution />} />
     <Route path="/solution/:id" element={<Solution />} />
     <Route path="/submit" element={<Submit />} />
+    <Route path="/profile/:id" element={<Profile />} />
+    <Route path="profile/edit" element={<EditProfile />} />
   </Route>,
 )
 
