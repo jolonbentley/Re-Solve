@@ -39,7 +39,13 @@ export async function addSolutionDisBox(commentData: object) {
 
 export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/completed/${id}`)
+  return res.body
+}
 
+export async function getFiveCompletedChallenges(
+  id: number,
+): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/challenges/fivecompleted/${id}`)
   return res.body
 }
 
@@ -57,6 +63,13 @@ export async function getIncompleteChallenges(
   id: number,
 ): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/incomplete/${id}`)
+  return res.body
+}
+
+export async function getFiveIncompleteChallenges(
+  id: number,
+): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/challenges/fiveincomplete/${id}`)
   return res.body
 }
 

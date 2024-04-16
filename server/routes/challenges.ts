@@ -92,4 +92,26 @@ router.post('/submit', async (req, res) => {
   }
 })
 
+router.get('/fivecompleted/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const completedChallenges = await db.getFiveCompletedChallenges(id)
+    res.json(completedChallenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.get('/fiveincomplete/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const incompleteChallenges = await db.getFiveIncompleteChallenges(id)
+    res.json(incompleteChallenges)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router

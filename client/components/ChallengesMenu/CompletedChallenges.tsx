@@ -1,9 +1,8 @@
-import HeadingBlock from "../BuildingBlocks/HeadingBlock"
-import ChallengeCard from "../BuildingBlocks/ChallengeCard"
-import { useQuery } from "@tanstack/react-query"
-import { getIncompleteChallenges } from "../../apis/apiClient"
-import { getCompletedChallenges } from "../../apis/apiClient"
-import useUser from "../../hooks/useUser"
+import HeadingBlock from '../BuildingBlocks/HeadingBlock'
+import ChallengeCard from '../BuildingBlocks/ChallengeCard'
+import { useQuery } from '@tanstack/react-query'
+import { getFiveCompletedChallenges } from '../../apis/apiClient'
+import useUser from '../../hooks/useUser'
 
 export default function CompletedChallenges() {
   const user = useUser().data
@@ -19,19 +18,14 @@ export default function CompletedChallenges() {
     data: challengesData,
   } = useQuery({
     queryKey: ['completedChallenges'],
-    queryFn: () => getCompletedChallenges(id),
-    enabled: !!id // Enabled once id exists
+    queryFn: () => getFiveCompletedChallenges(id),
+    enabled: !!id, // Enabled once id exists
   })
   if (isLoading || !challengesData) {
     return (
       <div className="flex flex-col justify-center">
-        <HeadingBlock>
-          Completed Challenges
-        </HeadingBlock>
-        <span className="text-center mt-4">
-          Loading...  
-        </span>
-
+        <HeadingBlock>Completed Challenges</HeadingBlock>
+        <span className="mt-4 text-center">Loading...</span>
       </div>
     )
   }
@@ -41,10 +35,10 @@ export default function CompletedChallenges() {
   }
   return (
     <div>
-      <HeadingBlock>
-        Completed Challenges
-      </HeadingBlock>
-      {challengesData?.map((challenge, index) => ( <ChallengeCard key={index} linkToSolution={true} { ...challenge }/>))}
+      <HeadingBlock>Completed Challenges</HeadingBlock>
+      {challengesData?.map((challenge, index) => (
+        <ChallengeCard key={index} linkToSolution={true} {...challenge} />
+      ))}
     </div>
   )
 }
