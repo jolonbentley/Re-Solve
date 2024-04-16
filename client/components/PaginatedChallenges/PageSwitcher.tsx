@@ -11,12 +11,12 @@ export default function PageSwitcher() {
     queryClient.invalidateQueries({queryKey: ['getPage']})
   }, [pageNo, queryClient])
 
-  const nextPage = "http://localhost:5173/challenges/" + (Number(pageNo) + 1)
+  const nextPage = "/challenges/" + (Number(pageNo) + 1)
   let prevPage =""
   if (pageNo <= 1) {
-    prevPage = "http://localhost:5173/challenges/" + (1)
+    prevPage = "/challenges/" + (1)
   } else {
-    prevPage = "http://localhost:5173/challenges/" + (Number(pageNo) - 1)
+    prevPage = "/challenges/" + (Number(pageNo) - 1)
   }
 
   return (
