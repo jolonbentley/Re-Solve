@@ -1,7 +1,5 @@
 import request from 'superagent'
 import { Challenge } from '../../models/challenges'
-import { Solution } from '../../models/solutions'
-import { SolutionComment } from '../../models/solutions'
 
 const rootUrl = '/api/v1'
 
