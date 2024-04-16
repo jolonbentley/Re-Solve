@@ -23,7 +23,7 @@ export default function ChallengeCard(props: Props) {
     <div className="flex flex-row w-full justify-end gap-1">
       <div className="flex-1">
         <Link to={'/challenge/' + id}>
-          <div className="p-4 text-center justify-items-center items-center bg-secondary text-secondary-content rounded-2xl my-2 grid grid-cols-4 drop-shadow-md hover:drop-shadow-xl hover:bg-accent hover:text-accent-content transition-all duration-300">
+          <div className="p-4 text-center justify-items-center items-center bg-secondary text-secondary-content rounded-2xl my-2 grid grid-cols-4 drop-shadow-md hover:drop-shadow-xl hover:glass hover:bg-accent hover:text-accent-content transition-all duration-300">
             <span className="text-lg font-bold">{title}</span>
             <span className="text-lg font-bold">{difficulty }</span>
             <span><span className="text-lg font-bold">{upvotes}</span> <span className="font-black text-success">↑</span></span>
