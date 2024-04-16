@@ -220,3 +220,67 @@ export async function changeToDownvote(user: number, challenge: number) {
     .decrement('upvotes', 1)
   return { updateRecords, updateChallenge }
 }
+
+export async function checkForUserVoteSolution(user: number, solution: number) {
+  const result = await db('user_solution_votes')
+    .where({ user_id: user, solution_id: solution })
+    .select('vote')
+    .first()
+  return result
+}
+
+export async function newUpvoteSolution(user: number, solution: number) {
+  const updateRecords = await db('user_solution_votes').insert({
+    user_id: user,
+    solution_id: solution,
+    vote: 1,
+  })
+
+  const updateSolution = await db('solutions')
+    .where('id', solution)
+    .increment('upvotes', 1)
+  return { updateRecords, updateSolution }
+}
+
+export async function changeToUpvoteSolution(user: number, solution: number) {
+  const updateRecords = await db('user_solution_votes')
+    .where({
+      user_id: user,
+      solution_id: solution,
+    })
+    .update('vote', 1)
+
+  const updateSolution = await db('solutions')
+    .where('id', solution)
+    .increment('upvotes', 1)
+    .decrement('downvotes', 1)
+  return { updateRecords, updateSolution }
+}
+
+export async function newDownvoteSolution(user: number, solution: number) {
+  const updateRecords = await db('user_solution_votes').insert({
+    user_id: user,
+    solution_id: solution,
+    vote: -1,
+  })
+
+  const updateSolution = await db('solutions')
+    .where('id', solution)
+    .increment('downvotes', 1)
+  return { updateRecords, updateSolution }
+}
+
+export async function changeToDownvoteSolution(user: number, solution: number) {
+  const updateRecords = await db('user_solution_votes')
+    .where({
+      user_id: user,
+      solution_id: solution,
+    })
+    .update('vote', -1)
+
+  const updateSolution = await db('solutions')
+    .where('id', solution)
+    .increment('downvotes', 1)
+    .decrement('upvotes', 1)
+  return { updateRecords, updateSolution }
+}

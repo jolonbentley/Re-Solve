@@ -94,7 +94,6 @@ export async function newUpvoteOnChallenge(
   userId: number,
   challengeId: number,
 ) {
-  console.log('api hit')
   const res = await request.post(
     `${rootUrl}/challenges/newUpvote/${userId}/${challengeId}`,
   )
@@ -115,7 +114,6 @@ export async function newDownvoteOnChallenge(
   userId: number,
   challengeId: number,
 ) {
-  console.log('api hit')
   const res = await request.post(
     `${rootUrl}/challenges/newDownvote/${userId}/${challengeId}`,
   )
@@ -128,6 +126,50 @@ export async function changeToDownvoteOnChallenge(
 ) {
   const res = await request.patch(
     `${rootUrl}/challenges/changeDownvote/${userId}/${challengeId}`,
+  )
+  return res.body
+}
+
+export async function checkSolutionVote(userId: number, solutionId: number) {
+  const res = await request.get(
+    `${rootUrl}/solutions/voteCheck/${userId}/${solutionId}`,
+  )
+  return res.body
+}
+
+export async function newUpvoteOnSolution(userId: number, solutionId: number) {
+  const res = await request.post(
+    `${rootUrl}/solutions/newUpvote/${userId}/${solutionId}`,
+  )
+  return res.body
+}
+
+export async function changeToUpvoteOnSolution(
+  userId: number,
+  solutionId: number,
+) {
+  const res = await request.patch(
+    `${rootUrl}/solutions/changeUpvote/${userId}/${solutionId}`,
+  )
+  return res.body
+}
+
+export async function newDownvoteOnSolution(
+  userId: number,
+  solutionId: number,
+) {
+  const res = await request.post(
+    `${rootUrl}/solutions/newDownvote/${userId}/${solutionId}`,
+  )
+  return res.body
+}
+
+export async function changeToDownvoteOnSolution(
+  userId: number,
+  solutionId: number,
+) {
+  const res = await request.patch(
+    `${rootUrl}/solutions/changeDownvote/${userId}/${solutionId}`,
   )
   return res.body
 }
