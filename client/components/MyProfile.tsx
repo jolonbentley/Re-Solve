@@ -26,6 +26,7 @@ export function MyProfile() {
           <li>Coolness: {user?.coolness}</li>
           <li>Spaghetness: {user?.spaghetness}</li>
           <li>Favourite Duck: {user?.favourite_duck}</li>
+          <li>About: {user?.about}</li>
         </ul>
       </div>
     </div>
