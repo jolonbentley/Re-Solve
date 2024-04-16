@@ -36,9 +36,15 @@ export default function Challenge() {
       <HeadingBlockSecondary>Challenge: {challenge.title}</HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
-        
-        <ChallengeSandbox code={code} />
-        <ChallengeCode code={code} />
+        <label className='text-center font-bold text-lg mb-2'>
+          Enter your Solution
+          <ChallengeSandbox code={code} />
+        </label> 
+        <label className='text-center font-bold text-lg mb-2'>
+          Challenge Preview
+          <ChallengeCode code={code} />
+        </label>
+
       </div>
 
     </ChallengeContainer>
