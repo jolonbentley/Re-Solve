@@ -35,6 +35,15 @@ export default function CompletedChallenges() {
     )
   }
 
+  if (challengesData.length == 0) {
+    return (
+      <div className='flex flex-col place-items-center'>
+        <HeadingBlock>Completed Challenges</HeadingBlock> 
+        <span className='mt-4'>You haven&apos;t completed any challenges yet</span>
+      </div>
+    )
+  }
+  
   return (
     <div>
       <HeadingBlock>Completed Challenges</HeadingBlock>

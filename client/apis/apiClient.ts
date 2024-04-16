@@ -1,7 +1,5 @@
 import request from 'superagent'
 import { Challenge } from '../../models/challenges'
-import { Solution } from '../../models/solutions'
-import { SolutionComment } from '../../models/solutions'
 
 const rootUrl = '/api/v1'
 
@@ -42,6 +40,14 @@ export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   return res.body
 }
 
+// export async function getCompletedChallengesByUserId(
+//   userId: number,
+// ): Promise<Challenge[]> {
+//   const res = await request.get(`${rootUrl}/challenges/completed/${userId}`)
+
+//   return res.body
+// }
+
 export async function getFiveCompletedChallenges(
   id: number,
 ): Promise<Challenge[]> {
@@ -53,6 +59,7 @@ export async function getChallenge(id: number) {
   const res = await request.get(`${rootUrl}/challenges/${id}`)
   return res.body
 }
+
 
 export async function getChallengeSolutions(id: number) {
   const res = await request.get(`${rootUrl}/solutions/challengesolution/${id}`)
@@ -70,6 +77,11 @@ export async function getFiveIncompleteChallenges(
   id: number,
 ): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/fiveincomplete/${id}`)
+  return res.body
+}
+
+export async function getPageOfChallenges( pageNo: number, pageSize: number ): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/challenges/page/${pageNo}/${pageSize}`)
   return res.body
 }
 

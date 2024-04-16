@@ -2,14 +2,17 @@ import Nav from '../components/Nav/Nav.tsx'
 import Home from './Home.tsx'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer/Footer.tsx'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <div className="bg-neutral text-neutral-content">
-      <Nav />
-      <Outlet />
-      <Footer />
+      <QueryClientProvider client={queryClient}>
+        <Nav />
+        <Outlet />
+        <Footer />
+      </QueryClientProvider>
     </div>
   )
 }

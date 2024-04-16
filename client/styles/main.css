@@ -31,7 +31,10 @@ tr th:nth-child(1) {
   font-style: normal;
 }
 
-.editor-wrapper .monaco-editor, .editor-wrapper .overflow-guard { border-radius: 10px; }
+.editor-wrapper .monaco-editor,
+.editor-wrapper .overflow-guard {
+  border-radius: 10px;
+}
 
 /* body {
   font-family: 'Kanit'
@@ -40,10 +43,14 @@ tr th:nth-child(1) {
 /* CSS */
 :root {
   font-family: 'Inter', sans-serif;
-  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+  font-feature-settings:
+    'liga' 1,
+    'calt' 1; /* fix for Chrome */
 }
 @supports (font-variation-settings: normal) {
-  :root { font-family: InterVariable, sans-serif; }
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
 }
 
 /* style Button */
@@ -133,7 +140,7 @@ input {
   box-shadow: #000;
 }
 input::placeholder {
-  color: red;
+  color: gray;
 }
 label,
 input {
@@ -196,4 +203,66 @@ input {
 
 .links .link:hover {
   color: goldenrod;
+}
+
+/* Profile-page */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 10px;
+  border-style: double;
+  border-color: goldenrod;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-avatar img {
+  width: 150px;
+  height: 160px;
+  border-radius: 10%;
+  margin-right: 40px;
+}
+
+.profile-info h2 {
+  margin: 0;
+}
+
+.profile-details {
+  margin-top: 10px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+.profile-body {
+  background-color: #000;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.profile-body h3 {
+  margin-top: 0;
+}
+
+/*  */
+
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.p-name {
+  color: goldenrod;
+  font-weight: bold;
+  font-size: xx-large;
 }

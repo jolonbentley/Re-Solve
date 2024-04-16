@@ -10,6 +10,7 @@ import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSeco
 import Downvote from '../components/ChallengeDownvote'
 import Upvote from '../components/ChallengeUpvote'
 import ChallengeUpvote from '../components/ChallengeUpvote'
+import HeadingBlockWithDate from '../components/BuildingBlocks/HeadingBlockWithDate'
 
 export default function Challenge() {
   const id = Number(useParams().id)
@@ -36,13 +37,17 @@ export default function Challenge() {
 
   return (
     <ChallengeContainer>
-      <HeadingBlockSecondary>
-        Challenge: {challenge.title}
-      </HeadingBlockSecondary>
+      <HeadingBlockWithDate date={challenge.date}>Challenge: {challenge.title}</HeadingBlockWithDate>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
-        <ChallengeSandbox code={code} />
-        <ChallengeCode code={code} />
+        <label className='text-center font-bold text-lg mb-2'>
+          Enter your Solution
+          <ChallengeSandbox code={code} />
+        </label> 
+        <label className='text-center font-bold text-lg mb-2'>
+          Challenge Preview
+          <ChallengeCode code={code} />
+        </label>
       </div>
     </ChallengeContainer>
   )

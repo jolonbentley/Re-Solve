@@ -10,6 +10,15 @@ export async function getAllChallenges() {
   return await db('challenges').select('*')
 }
 
+export async function getNOffsetChallenges(n: number, offset: number) {
+  return await db('challenges')
+    .select('*')
+    .limit(n)
+    .offset(offset)
+    .orderBy('date', 'desc')
+
+}
+
 export async function getChallengeById(id: number) {
   return await db('challenges').where('id', id).select('*').first()
 }

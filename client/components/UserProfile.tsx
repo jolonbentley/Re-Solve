@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getUserById } from '../apis/userAPI'
+import { CompletedChallengesByUserId } from './CompletedChallengesByuserId'
+import HeadingBlock from './BuildingBlocks/HeadingBlock'
 
 export function UserProfile() {
   // const user = useUser().data
@@ -29,25 +31,26 @@ export function UserProfile() {
   // NEED TO ADD THEIR SOLUTIONS TABLE TO THEIR PROFILE
 
   return (
-    <div>
-      <div>
-        <h2>Profile</h2>
+    <div className="profile-container">
+      <div className="profile-header">
+        <div className="profile-avatar">
+          <img src={user?.profile_pic_url} alt="user portrait" />
+        </div>
+        <div className="profile-info">
+          <h2 className="p-name">{user?.name}</h2>
+          <div className="profile-details">
+            <p>Experience: {user?.experience}</p>
+            <p>Coolness: {user?.coolness}</p>
+            <p>Spaghetness: {user?.spaghetness}</p>
+            <p>Favourite Duck: {user?.favourite_duck}</p>
+            <p>About: {user?.about}</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <img src={user?.profile_pic_url} alt="user portrait" />
-      </div>
-      <div>
-        <ul key={id}>
-          <li>Name: {user?.name}</li>
-          <li>Experience: {user?.experience}</li>
-          <li>Coolness: {user?.coolness}</li>
-          <li>Spaghetness: {user?.spaghetness}</li>
-          <li>Favourite Duck: {user?.favourite_duck}</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Submitted Solutions</h2>
-      </div>
+
+      <HeadingBlock>
+        <CompletedChallengesByUserId />
+      </HeadingBlock>
     </div>
   )
 }
