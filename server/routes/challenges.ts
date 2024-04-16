@@ -114,4 +114,18 @@ router.get('/fiveincomplete/:id', async (req, res) => {
   }
 })
 
+router.get('/page/:pageNo/:pageSize', async (req, res) => {
+  const pageNo = Number(req.params.pageNo)
+  const pageSize = Number(req.params.pageSize)
+  const offset = (pageNo - 1) * pageSize
+  try {
+    const pageResults = await db.getNOffsetChallenges(pageSize, offset)
+    res.json(pageResults)
+  } catch (error) {
+    console.error(error)
+    res.status(418).send('You are a teapot')
+  }})
+
+
+
 export default router

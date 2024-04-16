@@ -8,12 +8,14 @@ import Challenges from './pages/Challenges.tsx'
 import Submit from './pages/Submit.tsx'
 import Profile from './pages/Profile.tsx'
 import EditProfile from './components/EditProfile.tsx'
+import PaginatedChallenges from './pages/PaginatedChallenges.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route index element={<Home />} />
     <Route path="/register" element={<LoginRedirect />} />
     <Route path="/challenges/" element={<Challenges />} />
+    <Route path="/challenges/:pageNo" element={<PaginatedChallenges />} />
     <Route path="/challenge/:id" element={<Challenge />} />
     <Route path="/solution/" element={<Solution />} />
     <Route path="/solution/:id" element={<Solution />} />
