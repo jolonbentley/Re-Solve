@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import useUser from '../hooks/useUser'
 import { UserProfile } from '../components/UserProfile'
 import { MyProfile } from '../components/MyProfile'
+import GenericContainer from '../components/BuildingBlocks/GenericContainer'
 
 export default function Profile() {
   // Check is this is the logged in users, page
@@ -22,10 +23,5 @@ export default function Profile() {
     return <div>Loading User...</div>
   }
 
-  return (
-    <div>
-      <h1>Profile</h1>
-      {id === user.id ? <MyProfile /> : <UserProfile />}
-    </div>
-  )
+  return <div>{id === user.id ? <MyProfile /> : <UserProfile />}</div>
 }
