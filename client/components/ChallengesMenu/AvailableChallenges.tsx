@@ -11,19 +11,26 @@ export default function AvailableChallenges() {
   const {
     isLoading,
     isError,
+    error,
     data: challengesData,
   } = useQuery({
     queryKey: ['icompleteChallenges'],
     queryFn: () => getFiveIncompleteChallenges(id),
     enabled: !!id, // Enabled once id exists
   })
-  if (isLoading) {
-    return <h1>Loading...ChallengesDataPage</h1>
+
+  if (isError) {
+    return <h1>Error: {String(error)}</h1>
   }
 
-  if (isError || !challengesData) {
-    return <h1>Error</h1>
+  if (isLoading || !challengesData) {
+    return (
+      <div className="flex flex-col justify-center">
+        <HeadingBlock>Available Challenges</HeadingBlock>
+        <span className="mt-4 mb-4 text-center">Loading...</span>
+      </div> )
   }
+
 
   return (
     <div>
