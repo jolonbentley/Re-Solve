@@ -28,7 +28,8 @@ export default function SandboxConsole({ editorRef }) {
     mutationFn: (data) => submitSolution(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['solutions'] })
-      // add redirect to solution page
+      console.log('challenge submitted')
+      window.location.href = `/solution/${id}`
     },
     onError: (error) => {
       console.log('Submission Failed', error)
