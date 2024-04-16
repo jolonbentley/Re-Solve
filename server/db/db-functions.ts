@@ -156,3 +156,11 @@ export async function getFiveIncompleteChallenges(id: number) {
     .orderBy('id', 'desc')
     .limit(5)
 }
+
+export async function checkForUserVote(user: number, challenge: number) {
+  const exists = await db('user_challenge_votes')
+    .where({ user_id: user, challenge_id: challenge })
+    .select('vote')
+    .first()
+  return !!exists
+}

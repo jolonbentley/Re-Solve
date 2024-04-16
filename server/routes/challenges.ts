@@ -114,4 +114,15 @@ router.get('/fiveincomplete/:id', async (req, res) => {
   }
 })
 
+router.get('/voteCheck/:user/:challenge', async (req, res) => {
+  console.log(req.params)
+  console.log('i got hit')
+  try {
+    res.status(200).send('i got hit')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router
