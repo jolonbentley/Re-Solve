@@ -10,6 +10,7 @@ const server = express()
 
 server.use(express.json())
 
+
 server.use('/api/v1/solutions', solutionRoutes)
 server.use('/api/v1/challenges', challengeRoutes)
 server.use('/api/v1/users', userRoutes)

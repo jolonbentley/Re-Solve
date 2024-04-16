@@ -7,6 +7,9 @@ import { getChallenge } from '../apis/apiClient'
 import ChallengeContainer from '../components/BuildingBlocks/ChallengeContainer'
 import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
 import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
+import Downvote from '../components/ChallengeDownvote'
+import Upvote from '../components/ChallengeUpvote'
+import ChallengeUpvote from '../components/ChallengeUpvote'
 import HeadingBlockWithDate from '../components/BuildingBlocks/HeadingBlockWithDate'
 
 export default function Challenge() {
@@ -45,9 +48,7 @@ export default function Challenge() {
           Challenge Preview
           <ChallengeCode code={code} />
         </label>
-
       </div>
-
     </ChallengeContainer>
   )
 }

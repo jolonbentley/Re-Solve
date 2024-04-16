@@ -18,5 +18,17 @@ export async function seed(knex) {
       profile_pic_url:
         'https://assets.coingecko.com/coins/images/34120/large/Phteve.jpeg?1704046341',
     },
+    {
+      id: 2,
+      auth_id: 'auth7543628',
+      name: 'Tyler',
+      coolness: 10,
+      spaghetness: 10,
+      favourite_duck: 'Mallard',
+      about: 'A simple code kind of guy',
+      experience: 'Graduate software developer',
+      profile_pic_url:
+        'https://assets.coingecko.com/coins/images/34120/large/Phteve.jpeg?1704046341',
+    },
   ])
 }

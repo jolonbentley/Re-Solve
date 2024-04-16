@@ -1,5 +1,7 @@
 import { Editor } from '@monaco-editor/react'
 import { ChallengeCode } from '../../models/challenges'
+import Upvote from './ChallengeUpvote'
+import Downvote from './ChallengeDownvote'
 
 export default function ChallengeCodebox({ code }: ChallengeCode) {
   return (
@@ -21,6 +23,10 @@ export default function ChallengeCodebox({ code }: ChallengeCode) {
             domReadOnly: true,
           }}
         />
+      </div>
+      <div className="flex justify-evenly py-12">
+        <Upvote />
+        <Downvote />
       </div>
     </div>
   )

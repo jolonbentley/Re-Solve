@@ -101,6 +101,66 @@ router.patch('/comments/:id', async (req, res) => {
   }
 })
 
+router.get('/voteCheck/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const check = await db.checkForUserVoteSolution(userId, solution)
+    res.json(check)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newUpvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const newVote = await db.newUpvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeUpvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const changeVote = await db.changeToUpvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newDownvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const newVote = await db.newDownvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeDownvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const changeVote = await db.changeToDownvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router
 
 // router.patch('/comment', async (req, res) => {
