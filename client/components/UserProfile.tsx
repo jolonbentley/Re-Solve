@@ -47,10 +47,7 @@ export function UserProfile() {
           </div>
         </div>
       </div>
-
-      <HeadingBlock>
-        <CompletedChallengesByUserId />
-      </HeadingBlock>
+      <CompletedChallengesByUserId />
     </div>
   )
 }
