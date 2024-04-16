@@ -9,6 +9,7 @@ import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
 import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
 import Downvote from '../components/ChallengeDownvote'
 import Upvote from '../components/ChallengeUpvote'
+import ChallengeUpvote from '../components/ChallengeUpvote'
 
 export default function Challenge() {
   const id = Number(useParams().id)
@@ -39,7 +40,7 @@ export default function Challenge() {
         Challenge: {challenge.title}
       </HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
-      <div className="py-500 flex flex-row justify-center">
+      <div className="flex flex-row justify-center">
         <ChallengeSandbox code={code} />
         <ChallengeCode code={code} />
       </div>

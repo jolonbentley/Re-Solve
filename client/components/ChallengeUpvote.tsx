@@ -6,9 +6,10 @@ import {
   newUpvoteOnChallenge,
 } from '../apis/apiClient'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Upvote() {
+  const [buttonColor, setButtonColor] = useState('bg-gray-300')
   const challengeId = useParams().id
   const user = useUser().data
 
@@ -58,10 +59,20 @@ export default function Upvote() {
     }
   }
 
+  useEffect(() => {
+    if (check === null || check === undefined) {
+      setButtonColor('bg-gray-300')
+    } else if (check.vote === 1) {
+      setButtonColor('bg-accent')
+    } else {
+      setButtonColor('bg-secondary')
+    }
+  }, [check])
+
   return (
     <div>
       <button
-        className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+        className={`btn ${buttonColor} text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400`}
         onClick={handleClick}
       >
         Upvote
