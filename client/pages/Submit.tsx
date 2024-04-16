@@ -23,7 +23,7 @@ export default function Submit() {
       queryClient.invalidateQueries({
         queryKey: ['solutions', 'AllChallenges'],
       })
-      // add redirect to home page
+      window.location.href = `/challenges/1`
     },
     onError: (error) => {
       console.log('Submission Failed', error)
