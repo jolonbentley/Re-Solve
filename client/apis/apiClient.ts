@@ -54,6 +54,7 @@ export async function getChallenge(id: number) {
   return res.body
 }
 
+
 export async function getChallengeSolutions(id: number) {
   const res = await request.get(`${rootUrl}/solutions/challengesolution/${id}`)
   return res.body
@@ -70,6 +71,11 @@ export async function getFiveIncompleteChallenges(
   id: number,
 ): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/fiveincomplete/${id}`)
+  return res.body
+}
+
+export async function getPageOfChallenges( pageNo: number, pageSize: number ): Promise<Challenge[]> {
+  const res = await request.get(`${rootUrl}/challenges/page/${pageNo}/${pageSize}`)
   return res.body
 }
 
