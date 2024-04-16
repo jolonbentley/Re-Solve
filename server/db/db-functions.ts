@@ -158,9 +158,65 @@ export async function getFiveIncompleteChallenges(id: number) {
 }
 
 export async function checkForUserVote(user: number, challenge: number) {
-  const exists = await db('user_challenge_votes')
+  const result = await db('user_challenge_votes')
     .where({ user_id: user, challenge_id: challenge })
     .select('vote')
     .first()
-  return !!exists
+  return result
+}
+
+export async function newUpvote(user: number, challenge: number) {
+  const updateRecords = await db('user_challenge_votes').insert({
+    user_id: user,
+    challenge_id: challenge,
+    vote: 1,
+  })
+
+  const updateChallenge = await db('challenges')
+    .where('id', challenge)
+    .increment('upvotes', 1)
+  return { updateRecords, updateChallenge }
+}
+
+export async function changeToUpvote(user: number, challenge: number) {
+  const updateRecords = await db('user_challenge_votes')
+    .where({
+      user_id: user,
+      challenge_id: challenge,
+    })
+    .update('vote', 1)
+
+  const updateChallenge = await db('challenges')
+    .where('id', challenge)
+    .increment('upvotes', 1)
+    .decrement('downvotes', 1)
+  return { updateRecords, updateChallenge }
+}
+
+export async function newDownvote(user: number, challenge: number) {
+  const updateRecords = await db('user_challenge_votes').insert({
+    user_id: user,
+    challenge_id: challenge,
+    vote: -1,
+  })
+
+  const updateChallenge = await db('challenges')
+    .where('id', challenge)
+    .increment('downvotes', 1)
+  return { updateRecords, updateChallenge }
+}
+
+export async function changeToDownvote(user: number, challenge: number) {
+  const updateRecords = await db('user_challenge_votes')
+    .where({
+      user_id: user,
+      challenge_id: challenge,
+    })
+    .update('vote', -1)
+
+  const updateChallenge = await db('challenges')
+    .where('id', challenge)
+    .increment('downvotes', 1)
+    .decrement('upvotes', 1)
+  return { updateRecords, updateChallenge }
 }

@@ -83,9 +83,51 @@ export async function submitProblem(data) {
   return res.body
 }
 
-export async function checkChallengeVote(userId, challengeId) {
+export async function checkChallengeVote(userId: number, challengeId: number) {
   const res = await request.get(
     `${rootUrl}/challenges/voteCheck/${userId}/${challengeId}`,
+  )
+  return res.body
+}
+
+export async function newUpvoteOnChallenge(
+  userId: number,
+  challengeId: number,
+) {
+  console.log('api hit')
+  const res = await request.post(
+    `${rootUrl}/challenges/newUpvote/${userId}/${challengeId}`,
+  )
+  return res.body
+}
+
+export async function changeToUpvoteOnChallenge(
+  userId: number,
+  challengeId: number,
+) {
+  const res = await request.patch(
+    `${rootUrl}/challenges/changeUpvote/${userId}/${challengeId}`,
+  )
+  return res.body
+}
+
+export async function newDownvoteOnChallenge(
+  userId: number,
+  challengeId: number,
+) {
+  console.log('api hit')
+  const res = await request.post(
+    `${rootUrl}/challenges/newDownvote/${userId}/${challengeId}`,
+  )
+  return res.body
+}
+
+export async function changeToDownvoteOnChallenge(
+  userId: number,
+  challengeId: number,
+) {
+  const res = await request.patch(
+    `${rootUrl}/challenges/changeDownvote/${userId}/${challengeId}`,
   )
   return res.body
 }

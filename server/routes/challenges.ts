@@ -115,10 +115,63 @@ router.get('/fiveincomplete/:id', async (req, res) => {
 })
 
 router.get('/voteCheck/:user/:challenge', async (req, res) => {
-  console.log(req.params)
-  console.log('i got hit')
+  const userId = Number(req.params.user)
+  const challengeId = Number(req.params.challenge)
   try {
-    res.status(200).send('i got hit')
+    const check = await db.checkForUserVote(userId, challengeId)
+    res.json(check)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newUpvote/:user/:challenge', async (req, res) => {
+  console.log('newupvote hit')
+  const userId = Number(req.params.user)
+  const challengeId = Number(req.params.challenge)
+  try {
+    const newVote = await db.newUpvote(userId, challengeId)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeUpvote/:user/:challenge', async (req, res) => {
+  console.log('changeUpvote hit')
+  const userId = Number(req.params.user)
+  const challengeId = Number(req.params.challenge)
+  try {
+    const changeVote = await db.changeToUpvote(userId, challengeId)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newDownvote/:user/:challenge', async (req, res) => {
+  console.log('newDownvote hit')
+  const userId = Number(req.params.user)
+  const challengeId = Number(req.params.challenge)
+  try {
+    const newVote = await db.newDownvote(userId, challengeId)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeDownvote/:user/:challenge', async (req, res) => {
+  console.log('changeDownvote hit')
+  const userId = Number(req.params.user)
+  const challengeId = Number(req.params.challenge)
+  try {
+    const changeVote = await db.changeToDownvote(userId, challengeId)
+    res.sendStatus(200)
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')
