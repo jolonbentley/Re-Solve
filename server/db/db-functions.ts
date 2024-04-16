@@ -128,7 +128,7 @@ export async function updateUserProfile(id: number, updates: Partial<User>) {
 export async function checkForSolution(
   user: number,
   challenge: number,
-): Promise<Boolean> {
+): Promise<boolean> {
   const result = await db('solutions')
     .where('author_id', user)
     .select('*')
@@ -136,4 +136,23 @@ export async function checkForSolution(
     .count('author_id as count')
     .first()
   return result.count > 0
+}
+
+export async function getFiveCompletedChallenges(id: number) {
+  return await db('challenges')
+    .join('solutions', 'challenges.id', 'solutions.challenge_id')
+    .where('solutions.author_id', id)
+    .select('challenges.*')
+    .orderBy('id', 'desc')
+    .limit(5)
+}
+
+export async function getFiveIncompleteChallenges(id: number) {
+  return await db('challenges')
+    .whereNotIn('id', function () {
+      this.select('challenge_id').from('solutions').where('author_id', id)
+    })
+    .select('*')
+    .orderBy('id', 'desc')
+    .limit(5)
 }
