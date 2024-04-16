@@ -57,7 +57,12 @@ export default function Downvote() {
 
   return (
     <div>
-      <button onClick={handleClick}>Downvote</button>
+      <button
+        className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+        onClick={handleClick}
+      >
+        Downvote
+      </button>
     </div>
   )
 }

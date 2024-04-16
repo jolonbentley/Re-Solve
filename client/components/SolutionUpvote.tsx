@@ -7,12 +7,13 @@ import {
 } from '../apis/apiClient'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
+import { DisplaySolution } from '../../models/solutions'
 
-export default function SolutionUpvote() {
-  const solutionId = useParams().id
+export default function SolutionUpvote({ data }: DisplaySolution) {
+  const solutionId = data.id
   const user = useUser().data
 
-  console.log(user)
+  console.log('upvote', solutionId)
 
   const { data: check } = useQuery({
     queryKey: [`${solutionId}, ${user?.id} votecheck`],
@@ -60,7 +61,12 @@ export default function SolutionUpvote() {
 
   return (
     <div>
-      <button onClick={handleClick}>Upvote</button>
+      <button
+        className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+        onClick={handleClick}
+      >
+        Upvote
+      </button>
     </div>
   )
 }

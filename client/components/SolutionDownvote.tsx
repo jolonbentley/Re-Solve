@@ -6,9 +6,10 @@ import {
   newDownvoteOnSolution,
 } from '../apis/apiClient'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { DisplaySolution } from '../../models/solutions'
 
-export default function SolutionDownvote() {
-  const solutionId = useParams().id
+export default function SolutionDownvote({ data }: DisplaySolution) {
+  const solutionId = data.id
   const user = useUser().data
 
   const { data: check } = useQuery({
@@ -57,7 +58,12 @@ export default function SolutionDownvote() {
 
   return (
     <div>
-      <button onClick={handleClick}>Downvote</button>
+      <button
+        className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+        onClick={handleClick}
+      >
+        Downvote
+      </button>
     </div>
   )
 }

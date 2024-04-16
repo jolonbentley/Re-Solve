@@ -35,15 +35,11 @@ export default function Challenge() {
 
   return (
     <ChallengeContainer>
-      <div>
-        <Upvote />
-        <Downvote />
-      </div>
       <HeadingBlockSecondary>
         Challenge: {challenge.title}
       </HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
-      <div className="flex flex-row justify-center">
+      <div className="py-500 flex flex-row justify-center">
         <ChallengeSandbox code={code} />
         <ChallengeCode code={code} />
       </div>
