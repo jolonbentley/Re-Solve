@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPageOfChallenges } from "../../apis/apiClient";
-import ChallengeCardDetailed from "../BuildingBlocks/ChallengeCardDetailed";
+import ChallengeCard from "../BuildingBlocks/ChallengeCard";
 
 interface Props {
   pageNo: number
@@ -9,7 +9,6 @@ interface Props {
 
 export default function PageOfChallenges( props: Props ) {
   const { pageNo, pageSize } = props
-
   const { isPending, isError, error, data } = useQuery({queryKey: ['getPage'], queryFn: () => getPageOfChallenges(pageNo, pageSize)})
   
   if (isError) {
@@ -27,7 +26,7 @@ export default function PageOfChallenges( props: Props ) {
     <div>
       {data.map((challenge, index) => {
         return (
-          <ChallengeCardDetailed key={index} {...challenge} />
+          <ChallengeCard key={index} {...challenge} />
         )
       })}
     </div>
