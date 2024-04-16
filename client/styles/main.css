@@ -207,7 +207,7 @@ input {
 
 /* Profile-page */
 .profile-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   background-color: #000;
@@ -216,17 +216,37 @@ input {
   border-color: goldenrod;
 }
 
+.main-profile-header {
+  display: flex;
+  flex-direction: row;
+}
+
 .profile-header {
   display: flex;
-  align-items: center;
+  align-items: left;
   margin-bottom: 20px;
 }
 
+.btn-profile-div {
+  display: flex;
+  justify-content: end;
+  flex: 1;
+}
+
+.profile-avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .profile-avatar img {
-  width: 150px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 10%;
-  margin-right: 40px;
+}
+
+.profile-info {
+  padding-left: 20px;
 }
 
 .profile-info h2 {
@@ -254,7 +274,6 @@ input {
 /*  */
 
 .profile-container {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: #000;
