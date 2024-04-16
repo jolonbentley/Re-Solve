@@ -7,6 +7,7 @@ import { getChallenge } from '../apis/apiClient'
 import ChallengeContainer from '../components/BuildingBlocks/ChallengeContainer'
 import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
 import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
+import HeadingBlockWithDate from '../components/BuildingBlocks/HeadingBlockWithDate'
 
 export default function Challenge() {
   const id = Number(useParams().id)
@@ -33,7 +34,7 @@ export default function Challenge() {
 
   return (
     <ChallengeContainer>
-      <HeadingBlockSecondary>Challenge: {challenge.title}</HeadingBlockSecondary>
+      <HeadingBlockWithDate date={challenge.date}>Challenge: {challenge.title}</HeadingBlockWithDate>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
         <label className='text-center font-bold text-lg mb-2'>
