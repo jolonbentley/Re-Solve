@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getUserById } from '../apis/userAPI'
-// import { CompletedChallengesByUserId } from './CompletedChallenges'
+import { CompletedChallengesByUserId } from './CompletedChallengesByuserId'
+import HeadingBlock from './BuildingBlocks/HeadingBlock'
 
 export function UserProfile() {
   // const user = useUser().data
@@ -46,11 +47,10 @@ export function UserProfile() {
           </div>
         </div>
       </div>
-      {/* <div className="profile-body">
-        <h3>Submitted Solutions</h3> */}
-      {/* Add your solutions table or any other content here */}
-      {/* <CompletedChallengesByUserId /> */}
-      {/* </div> */}
+
+      <HeadingBlock>
+        <CompletedChallengesByUserId />
+      </HeadingBlock>
     </div>
   )
 }

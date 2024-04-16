@@ -42,6 +42,14 @@ export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   return res.body
 }
 
+// export async function getCompletedChallengesByUserId(
+//   userId: number,
+// ): Promise<Challenge[]> {
+//   const res = await request.get(`${rootUrl}/challenges/completed/${userId}`)
+
+//   return res.body
+// }
+
 export async function getFiveCompletedChallenges(
   id: number,
 ): Promise<Challenge[]> {
