@@ -7,6 +7,7 @@ import { getChallenge } from '../apis/apiClient'
 import ChallengeContainer from '../components/BuildingBlocks/ChallengeContainer'
 import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
 import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
+import VoteButtons from '../components/Votebuttons'
 
 export default function Challenge() {
   const id = Number(useParams().id)
@@ -33,14 +34,17 @@ export default function Challenge() {
 
   return (
     <ChallengeContainer>
-      <HeadingBlockSecondary>Challenge: {challenge.title}</HeadingBlockSecondary>
+      <div>
+        <VoteButtons />
+      </div>
+      <HeadingBlockSecondary>
+        Challenge: {challenge.title}
+      </HeadingBlockSecondary>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
-        
         <ChallengeSandbox code={code} />
         <ChallengeCode code={code} />
       </div>
-
     </ChallengeContainer>
   )
 }

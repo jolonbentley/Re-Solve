@@ -82,3 +82,10 @@ export async function submitProblem(data) {
   const res = await request.post(`${rootUrl}/challenges/submit`).send(data)
   return res.body
 }
+
+export async function checkChallengeVote(userId, challengeId) {
+  const res = await request.get(
+    `${rootUrl}/challenges/voteCheck/${userId}/${challengeId}`,
+  )
+  return res.body
+}
