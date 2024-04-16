@@ -21,6 +21,11 @@ export default function CompletedChallenges() {
     queryFn: () => getFiveCompletedChallenges(id),
     enabled: !!id, // Enabled once id exists
   })
+
+  if (isError) {
+    return <h1>Error: {String(error)}</h1>
+  }
+  
   if (isLoading || !challengesData) {
     return (
       <div className="flex flex-col justify-center">
@@ -30,9 +35,6 @@ export default function CompletedChallenges() {
     )
   }
 
-  if (isError) {
-    return <h1>Error: {String(error)}</h1>
-  }
   return (
     <div>
       <HeadingBlock>Completed Challenges</HeadingBlock>
