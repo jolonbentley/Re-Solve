@@ -44,7 +44,7 @@ export async function addUser(authID: string, givenName: string) {
     favourite_duck: duckGenerator(authID + givenName), // TO DO - generate randomly from a hash of user's authID + name
     about: 'Write a story about yourself here',
     experience: '',
-    profile_pic_url: '',
+    profile_pic_url: 'https://cdn-icons-png.freepik.com/512/8784/8784675.png',
   }
   const result = await db('users').insert(userData)
   return result
