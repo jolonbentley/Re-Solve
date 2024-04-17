@@ -140,9 +140,32 @@ tr th:nth-child(1) {
 
 /* Landing Page*/
 .homepage-container {
-  background-color: gray;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 73vh;
+  background-image: url('/public/images/homepage-background-img.png');
+  background-size: contain;
+}
+
+.hello-container {
+  width: 900px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-text {
+  padding: 5px;
+}
+
+.btn-signup-div {
+  justify-self: center;
+  align-items: center;
+  padding-top: 30px;
 }
 
 /* Input -placeholder */

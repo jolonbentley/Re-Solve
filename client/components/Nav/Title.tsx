@@ -1,5 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 export default function Title() {
-  return <Link to="/" className="flex items-center"> <span className="kanit-regular tracking-tight text-6xl content-center ml-auto mr-auto">Re: Solve</span> </Link>
+  return (
+    <Link to="/" className="flex items-center">
+      {' '}
+      <span className="ml-auto mr-auto content-center text-6xl font-bold tracking-tight">
+        Re-Solve
+      </span>{' '}
+    </Link>
+  )
 }
