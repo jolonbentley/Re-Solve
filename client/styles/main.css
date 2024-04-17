@@ -40,6 +40,13 @@ tr th:nth-child(1) {
   font-family: 'Kanit'
 } */
 
+.body-div {
+  min-height: 73.714vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+
 /* CSS */
 :root {
   font-family: 'Inter', sans-serif;
