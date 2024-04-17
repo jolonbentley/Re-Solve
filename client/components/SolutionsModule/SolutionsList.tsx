@@ -20,7 +20,16 @@ export default function SolutionsList({ data, change }: Props) {
       {solutionsData.map((solution, index) => {
         return (
           <div key={index} onClick={() => handleClick(index)}>
-            <SolutionCard  {...solution} />
+            <div className="flex items-center">
+              <Link to={`/profile/${solution.author_id}`}>
+                <img
+                  src="/images/user-link-icon.png"
+                  alt="user icon"
+                  className="pr-2"
+                />
+              </Link>
+              <SolutionCard {...solution} />
+            </div>
           </div>
         )
       })}
