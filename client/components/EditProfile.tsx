@@ -20,6 +20,7 @@ export default function EditProfile() {
     mutationFn: (data) => updateUserProfile(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
+      window.location.href = `/profile/${user?.id}`
     },
     onError: (error) => {
       console.log('Submission Failed,', error)
@@ -139,14 +140,12 @@ export default function EditProfile() {
         </div>
 
         <div>
-          <Link to="">
-            <button
-              type="submit"
-              className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
-            >
-              Submit
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
