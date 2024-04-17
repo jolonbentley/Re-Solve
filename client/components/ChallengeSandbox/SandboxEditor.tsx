@@ -24,7 +24,6 @@ export default function SandboxEditor() {
   
   useEffect(() => {
     queryClient.invalidateQueries({queryKey: ["getsolutionx1"]})
-    console.log('invalidatteee!!')
   }, [solution.data?.body, challengeId, queryClient])
   
 

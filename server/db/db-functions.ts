@@ -64,6 +64,14 @@ export async function updateSolution(id: number, updates: Partial<Solution>) {
   await db('solutions').where('id', id).update(updates)
 }
 
+export async function updateSolutionVersion2ByLewis(challengeId: string, authorId: string, newSolution: Solution) {
+  const result = await db('solutions').where('challenge_id', challengeId).andWhere('author_id', authorId).update({
+    body: newSolution.body,
+    date: newSolution.date
+  })
+  return result
+}
+
 export async function saveSolutionComment(
   data: object,
 ): Promise<SolutionComment[]> {

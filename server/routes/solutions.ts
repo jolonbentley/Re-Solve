@@ -48,7 +48,9 @@ router.post('/submit', async (req, res) => {
       await db.saveSolution(solution)
       res.status(201).send('Solution saved')
     } else {
-      res.status(401).send('You have already submitted a solution')
+      // Update solution.
+      await db.updateSolutionVersion2ByLewis(challengeId, userId, solution)
+      res.status(201).send('Solution Updated')
     }
   } catch (error) {
     console.error(error)
