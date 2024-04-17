@@ -13,8 +13,6 @@ export default function Upvote() {
   const challengeId = useParams().id
   const user = useUser().data
 
-  console.log(user)
-
   const { data: check } = useQuery({
     queryKey: [`${challengeId}, ${user?.id} votecheck`],
     queryFn: () => checkChallengeVote(user?.id, challengeId),
@@ -48,13 +46,10 @@ export default function Upvote() {
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault()
     if (!check) {
-      console.log('new upvote recording')
       newUpvote.mutate()
     } else if (check.vote === 1) {
-      console.log('you already upvoted')
       return
     } else if (check.vote === -1) {
-      console.log('change to upvote')
       changeUpvote.mutate()
     }
   }
