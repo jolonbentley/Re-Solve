@@ -3,7 +3,7 @@ export interface Solution {
   challenge_id: number
   title: string
   date: Date
-  body: Text
+  body: string 
   author_id: number
   is_published: boolean
   upvotes: number

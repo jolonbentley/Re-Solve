@@ -42,7 +42,7 @@ export default function Challenge() {
       <div className="flex flex-row justify-center">
         <label className='text-center font-bold text-lg mb-2'>
           Enter your Solution
-          <ChallengeSandbox code={code} />
+          <ChallengeSandbox code={code} challengeId={String(id)} />
         </label> 
         <label className='text-center font-bold text-lg mb-2'>
           Challenge Preview
