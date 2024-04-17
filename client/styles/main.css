@@ -138,6 +138,13 @@ tr th:nth-child(1) {
   border-radius: 10px;
 }
 
+/* Landing Page*/
+.homepage-container {
+  background-color: gray;
+  display: grid;
+  height: 73vh;
+}
+
 /* Input -placeholder */
 input {
   border: #000;
