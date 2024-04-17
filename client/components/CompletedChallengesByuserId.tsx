@@ -29,7 +29,7 @@ export function CompletedChallengesByUserId() {
   return (
     <div className="mx-auto max-w-screen-lg flex-col items-center justify-items-center rounded-3xl bg-primary px-6 py-6 text-primary-content drop-shadow-[2px_4px_4px_rgba(0,0,0,0.25)]">
       <HeadingBlock>
-        <h1 style={{ padding: '20px' }}>Completed Challenges</h1>
+        <h1 style={{ paddingBottom: '10px' }}>Completed Challenges</h1>
       </HeadingBlock>
       {Array.isArray(completedChallenges) &&
         completedChallenges.map((challenge) => (

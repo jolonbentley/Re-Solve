@@ -27,14 +27,16 @@ export default function AvailableChallenges() {
     return (
       <div className="flex flex-col justify-center">
         <HeadingBlock>Available Challenges</HeadingBlock>
-        <span className="mt-4 mb-4 text-center">Loading...</span>
-      </div> )
+        <span className="mb-4 mt-4 text-center">Loading...</span>
+      </div>
+    )
   }
-
 
   return (
     <div>
-      <HeadingBlock>Available Challenges</HeadingBlock>
+      <HeadingBlock>
+        <div style={{ paddingBottom: '10px' }}>Available Challenges</div>
+      </HeadingBlock>
       {challengesData?.map((challenge, index) => (
         <ChallengeCard key={index} {...challenge} />
       ))}
