@@ -68,9 +68,6 @@ export default function SandboxEditor() {
       <div>
         <SandboxConsole editorRef={editorRef} />
       </div>
-      <p>
-        {editorCode}
-      </p>
     </div>
   )
 }

@@ -11,7 +11,6 @@ export async function fetchChallenges(): Promise<Challenge[]> {
 
 export async function fetchSolutionDisBox(id: number) {
   const res = await request.get(`${rootUrl}/solutions/comments/${id}`)
-  console.log('api client', res.body)
   return res.body
 }
 
@@ -28,7 +27,7 @@ export async function getSolutionByChallengeIdAndAuthorId(challengeId: string, a
     authorIdToUse = String(authorId)
   } 
   const res = await request
-    .get(`${rootUrl}/solutions/${challengeId}/${authorIdToUse}`)
+    .get(`${rootUrl}/solutions/fix/${challengeId}/${authorIdToUse}`)
   if (res.body == null || res.body == undefined) {
     return {body: ""}
   }
