@@ -4,6 +4,7 @@ import { getCompletedChallenges } from '../apis/apiClient'
 import useUser from '../hooks/useUser'
 import { useParams } from 'react-router-dom'
 import HeadingBlock from './BuildingBlocks/HeadingBlock'
+import GenericContainer from './BuildingBlocks/GenericContainer'
 
 export function CompletedChallengesByUserId() {
   const userId = useParams().id
@@ -26,33 +27,47 @@ export function CompletedChallengesByUserId() {
   }
 
   return (
-    <div>
-      <div>
-        <HeadingBlock>
-          <h1 style={{ padding: '20px' }}>Completed Challenges</h1>
-        </HeadingBlock>
-      </div>
-
-      {completedChallenges.map((challenge) => (
-        <div
-          key={challenge.id}
-          className="my-2 mr-2 grid grid-cols-5 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl"
-        >
-          <span className="text-lg font-bold">
-            <Link to={`/challenge/${challenge.id}`}>{challenge.title}</Link>
-          </span>
-          <span className="text-lg font-bold">{challenge.difficulty}</span>
-          <span className="text-lg font-bold">{challenge.upvotes}</span>
-          <span className="text-lg font-bold">{challenge.downvotes}</span>
-          <div className="" id="divSoup">
-            <Link to={`/solution/${challenge.id}`}>
-              <div className=" my-2 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl">
-                <span className="text-lg font-bold">Solutions</span>
-              </div>
-            </Link>
+    <div className="mx-auto max-w-screen-lg flex-col items-center justify-items-center rounded-3xl bg-primary px-6 py-6 text-primary-content drop-shadow-[2px_4px_4px_rgba(0,0,0,0.25)]">
+      <HeadingBlock>
+        <h1 style={{ paddingBottom: '10px' }}>Completed Challenges</h1>
+      </HeadingBlock>
+      {Array.isArray(completedChallenges) &&
+        completedChallenges.map((challenge) => (
+          <div
+            className="flex w-full flex-row justify-end gap-1"
+            key={challenge.id}
+          >
+            <div className="flex-1">
+              <Link to={'/challenge/' + challenge.id}>
+                <div className="my-2 grid grid-cols-4 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:glass hover:bg-accent hover:text-accent-content hover:drop-shadow-xl">
+                  <span className="text-lg font-bold">{challenge.title}</span>
+                  <span className="text-lg font-bold">
+                    {challenge.difficulty}
+                  </span>
+                  <span>
+                    <span className="text-lg font-bold">
+                      {challenge.upvotes}
+                    </span>{' '}
+                    <span className="font-black text-success">↑</span>
+                  </span>
+                  <span>
+                    <span className="text-lg font-bold">
+                      {challenge.downvotes}
+                    </span>{' '}
+                    <span className="font-black text-error">↓</span>
+                  </span>
+                </div>
+              </Link>
+            </div>
+            <div className="" id="divSoup">
+              <Link to={'/solution/' + challenge.id}>
+                <div className=" my-2 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl">
+                  <span className="text-lg font-bold">Solutions</span>
+                </div>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   )
 }

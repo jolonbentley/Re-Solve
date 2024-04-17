@@ -25,7 +25,7 @@ export default function CompletedChallenges() {
   if (isError) {
     return <h1>Error: {String(error)}</h1>
   }
-  
+
   if (isLoading || !challengesData) {
     return (
       <div className="flex flex-col justify-center">
@@ -37,16 +37,22 @@ export default function CompletedChallenges() {
 
   if (challengesData.length == 0) {
     return (
-      <div className='flex flex-col place-items-center'>
-        <HeadingBlock>Completed Challenges</HeadingBlock> 
-        <span className='mt-4'>You haven&apos;t completed any challenges yet</span>
+      <div className="flex flex-col place-items-center">
+        <HeadingBlock>Completed Challenges</HeadingBlock>
+        <span className="mt-4">
+          You haven&apos;t completed any challenges yet
+        </span>
       </div>
     )
   }
-  
+
   return (
     <div>
-      <HeadingBlock>Completed Challenges</HeadingBlock>
+      <HeadingBlock>
+        <div style={{ paddingTop: '20px', paddingBottom: '10px' }}>
+          Completed Challenges
+        </div>
+      </HeadingBlock>
       {challengesData?.map((challenge, index) => (
         <ChallengeCard key={index} linkToSolution={true} {...challenge} />
       ))}

@@ -39,18 +39,30 @@ export function UserProfile() {
         <div className="profile-info">
           <h2 className="p-name">{user?.name}</h2>
           <div className="profile-details">
-            <p>Experience: {user?.experience}</p>
-            <p>Coolness: {user?.coolness}</p>
-            <p>Spaghetness: {user?.spaghetness}</p>
-            <p>Favourite Duck: {user?.favourite_duck}</p>
-            <p>About: {user?.about}</p>
+            <p>
+              <strong>Experience: </strong>
+              {user?.experience}
+            </p>
+            <p>
+              <strong>Coolness: </strong>
+              {user?.coolness}
+            </p>
+            <p>
+              <strong>Spaghetness: </strong>
+              {user?.spaghetness}
+            </p>
+            <p>
+              <strong>Favourite Duck: </strong>
+              {user?.favourite_duck}
+            </p>
+            <p>
+              <strong>About: </strong>
+              {user?.about}
+            </p>
           </div>
         </div>
       </div>
-
-      <HeadingBlock>
-        <CompletedChallengesByUserId />
-      </HeadingBlock>
+      <CompletedChallengesByUserId />
     </div>
   )
 }

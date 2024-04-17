@@ -82,6 +82,7 @@ router.get('/comments', async (req, res) => {
 
 router.get('/comments/:id', async (req, res) => {
   const id = parseInt(req.params.id)
+  console.log('i got hit')
   try {
     const comments = await db.getSolutionCommentsById(id)
     res.json(comments)
@@ -93,6 +94,7 @@ router.get('/comments/:id', async (req, res) => {
 
 router.post('/comments', async (req, res) => {
   const comment = { ...req.body, date: Date() }
+
   try {
     await db.saveSolutionComment(comment)
     res.status(201).send('Comment saved')
@@ -108,6 +110,66 @@ router.patch('/comments/:id', async (req, res) => {
   try {
     await db.updateSolutionComment(id, updates)
     res.status(200).send('Comment updated')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.get('/voteCheck/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const check = await db.checkForUserVoteSolution(userId, solution)
+    res.json(check)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newUpvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const newVote = await db.newUpvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeUpvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const changeVote = await db.changeToUpvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.post('/newDownvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const newVote = await db.newDownvoteSolution(userId, solution)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
+router.patch('/changeDownvote/:user/:solution', async (req, res) => {
+  const userId = Number(req.params.user)
+  const solution = Number(req.params.solution)
+  try {
+    const changeVote = await db.changeToDownvoteSolution(userId, solution)
+    res.sendStatus(200)
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')

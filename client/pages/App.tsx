@@ -5,12 +5,14 @@ import Footer from '../components/Footer/Footer.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient()
   return (
     <div className="bg-neutral text-neutral-content">
       <QueryClientProvider client={queryClient}>
         <Nav />
-        <Outlet />
+        <div className="body-div">
+          <Outlet />
+        </div>
         <Footer />
       </QueryClientProvider>
     </div>

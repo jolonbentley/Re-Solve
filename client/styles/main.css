@@ -40,6 +40,13 @@ tr th:nth-child(1) {
   font-family: 'Kanit'
 } */
 
+.body-div {
+  min-height: 73.714vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+
 /* CSS */
 :root {
   font-family: 'Inter', sans-serif;
@@ -150,6 +157,8 @@ input {
 /* Footer container */
 .footer {
   background-color: rgb(23 23 23);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 20px;
   border-top: 1px solid #e0e0e0;
   position: relative;
@@ -179,9 +188,16 @@ input {
   font-weight: bold;
 }
 
+.footer-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+}
+
 /* Footer text */
 .footer-text {
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -207,7 +223,7 @@ input {
 
 /* Profile-page */
 .profile-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   background-color: #000;
@@ -216,17 +232,37 @@ input {
   border-color: goldenrod;
 }
 
+.main-profile-header {
+  display: flex;
+  flex-direction: row;
+}
+
 .profile-header {
   display: flex;
-  align-items: center;
+  align-items: left;
   margin-bottom: 20px;
 }
 
+.btn-profile-div {
+  display: flex;
+  justify-content: end;
+  flex: 1;
+}
+
+.profile-avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .profile-avatar img {
-  width: 150px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 10%;
-  margin-right: 40px;
+}
+
+.profile-info {
+  padding-left: 20px;
 }
 
 .profile-info h2 {
@@ -254,7 +290,6 @@ input {
 /*  */
 
 .profile-container {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: #000;
@@ -265,4 +300,21 @@ input {
   color: goldenrod;
   font-weight: bold;
   font-size: xx-large;
+}
+
+/* Edit Profile page */
+.form-container {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

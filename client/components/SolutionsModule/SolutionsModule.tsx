@@ -34,8 +34,6 @@ export default function SolutionsModule({ id }: Id) {
     setOutput(index)
   }
 
-  console.log(solutions)
-
   return (
     <div className="flex flex-row">
       <div className="w-1/2">
