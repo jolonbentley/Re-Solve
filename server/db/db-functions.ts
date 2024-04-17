@@ -36,6 +36,10 @@ export async function getSolutionCommentsById(id: number) {
     )
 }
 
+export async function getSolutionByChallengeIdAndAuthorId(challengeId: string, authorId: string) {
+  return await db('solutions').where('author_id', authorId).andWhere('challenge_id', challengeId).first()
+}
+
 export async function getAllSolutions() {
   return await db('solutions').select('*')
 }
