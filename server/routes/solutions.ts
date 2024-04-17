@@ -26,8 +26,9 @@ router.get('/challengesolution/:id', async (req, res) => {
   }
 })
 
-router.get('/challengesolutions/:challengeId/:authorId', async (req, res) => {
-  const { challengeId, authorId } = req.params
+
+router.get('/fix/:challengeId/:authorId', async (req, res) => {
+  const {challengeId, authorId} = req.params
   try {
     const solutions = await db.getSolutionByChallengeIdAndAuthorId(
       challengeId,

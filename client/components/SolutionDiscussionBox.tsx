@@ -85,7 +85,7 @@ export function SolutionDisBox() {
             <Link to={`/profile/${solution.author_id}`}>{solution.name}</Link>
           </span>
           <span className="text-lg font-bold">{formatDate(solution)}</span>
-          <span className="text-lg font-bold">{solution.comment}</span>
+          <span className="text-lg font-bold col-span-2">{solution.comment}</span>
         </div>
       ))}
     </div>
