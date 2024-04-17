@@ -138,6 +138,36 @@ tr th:nth-child(1) {
   border-radius: 10px;
 }
 
+/* Landing Page*/
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 73vh;
+  background-image: url('/public/images/homepage-background-img.png');
+  background-size: contain;
+}
+
+.hello-container {
+  width: 900px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-text {
+  padding: 5px;
+}
+
+.btn-signup-div {
+  justify-self: center;
+  align-items: center;
+  padding-top: 30px;
+}
+
 /* Input -placeholder */
 input {
   border: #000;
