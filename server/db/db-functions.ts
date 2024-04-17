@@ -16,7 +16,6 @@ export async function getNOffsetChallenges(n: number, offset: number) {
     .limit(n)
     .offset(offset)
     .orderBy('date', 'desc')
-
 }
 
 export async function getChallengeById(id: number) {
@@ -33,6 +32,7 @@ export async function getSolutionCommentsById(id: number) {
       'users.name',
       'solution_comments.comment',
       'solution_comments.date',
+      'solution_comments.author_id',
     )
 }
 

@@ -69,6 +69,7 @@ router.get('/comments', async (req, res) => {
 
 router.get('/comments/:id', async (req, res) => {
   const id = parseInt(req.params.id)
+  console.log('i got hit')
   try {
     const comments = await db.getSolutionCommentsById(id)
     res.json(comments)
@@ -80,6 +81,7 @@ router.get('/comments/:id', async (req, res) => {
 
 router.post('/comments', async (req, res) => {
   const comment = { ...req.body, date: Date() }
+
   try {
     await db.saveSolutionComment(comment)
     res.status(201).send('Comment saved')

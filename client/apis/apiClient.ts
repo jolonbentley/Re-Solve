@@ -10,6 +10,7 @@ export async function fetchChallenges(): Promise<Challenge[]> {
 
 export async function fetchSolutionDisBox(id: number) {
   const res = await request.get(`${rootUrl}/solutions/comments/${id}`)
+  console.log('api client', res.body)
   return res.body
 }
 
@@ -60,7 +61,6 @@ export async function getChallenge(id: number) {
   return res.body
 }
 
-
 export async function getChallengeSolutions(id: number) {
   const res = await request.get(`${rootUrl}/solutions/challengesolution/${id}`)
   return res.body
@@ -80,8 +80,13 @@ export async function getFiveIncompleteChallenges(
   return res.body
 }
 
-export async function getPageOfChallenges( pageNo: number, pageSize: number ): Promise<Challenge[]> {
-  const res = await request.get(`${rootUrl}/challenges/page/${pageNo}/${pageSize}`)
+export async function getPageOfChallenges(
+  pageNo: number,
+  pageSize: number,
+): Promise<Challenge[]> {
+  const res = await request.get(
+    `${rootUrl}/challenges/page/${pageNo}/${pageSize}`,
+  )
   return res.body
 }
 
