@@ -1,5 +1,6 @@
 import request from 'superagent'
 import { Challenge } from '../../models/challenges'
+import { Solution } from '../../models/solutions'
 
 const rootUrl = '/api/v1'
 
@@ -14,40 +15,30 @@ export async function fetchSolutionDisBox(id: number) {
   return res.body
 }
 
-// export async function addSolutionDisBox(
-//   comment: SolutionComment,
-// ): Promise<SolutionComment[]> {
-//   const res = await request
-//     .post(`${rootUrl}/solutions/comments`)
-//     .send({ comment })
-//   return res.body
-// }
-
 export async function addSolutionDisBox(commentData: object) {
   const res = await request
     .post(`${rootUrl}/solutions/comments`)
     .send(commentData)
-  return res.body
+  return res.body as Solution
 }
 
-// export function getFruits(): Promise<string[]> {
-//   return request.get(rootUrl + '/fruits').then((res) => {
-//     return res.body.fruits
-//   })
-// }
+export async function getSolutionByChallengeIdAndAuthorId(challengeId: string, authorId: number | undefined) {
+  let authorIdToUse = ""
+  if (authorId) {
+    authorIdToUse = String(authorId)
+  } 
+  const res = await request
+    .get(`${rootUrl}/solutions/${challengeId}/${authorIdToUse}`)
+  if (res.body == null || res.body == undefined) {
+    return {body: ""}
+  }
+  return res.body
+}
 
 export async function getCompletedChallenges(id: number): Promise<Challenge[]> {
   const res = await request.get(`${rootUrl}/challenges/completed/${id}`)
   return res.body
 }
-
-// export async function getCompletedChallengesByUserId(
-//   userId: number,
-// ): Promise<Challenge[]> {
-//   const res = await request.get(`${rootUrl}/challenges/completed/${userId}`)
-
-//   return res.body
-// }
 
 export async function getFiveCompletedChallenges(
   id: number,

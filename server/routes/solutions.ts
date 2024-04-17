@@ -26,6 +26,17 @@ router.get('/challengesolution/:id', async (req, res) => {
   }
 })
 
+router.get('/:challengeId/:authorId', async (req, res) => {
+  const {challengeId, authorId} = req.params
+  try {
+    const solutions = await db.getSolutionByChallengeIdAndAuthorId(challengeId, authorId)
+    res.json(solutions)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 router.post('/submit', async (req, res) => {
   const solution = { ...req.body, date: Date() }
   const userId = solution.author_id
@@ -37,7 +48,9 @@ router.post('/submit', async (req, res) => {
       await db.saveSolution(solution)
       res.status(201).send('Solution saved')
     } else {
-      res.status(401).send('You have already submitted a solution')
+      // Update solution.
+      await db.updateSolutionVersion2ByLewis(challengeId, userId, solution)
+      res.status(201).send('Solution Updated')
     }
   } catch (error) {
     console.error(error)

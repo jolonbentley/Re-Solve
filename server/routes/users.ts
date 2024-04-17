@@ -58,7 +58,7 @@ router.patch('/edit', async (req, res) => {
   console.log(updates, id)
   try {
     await db.updateUserProfile(id, updates)
-    res.status(200).send('User profile updated')
+    res.sendStatus(200)
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')

@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import useUser from '../hooks/useUser'
 import { Link } from 'react-router-dom'
 import CompletedChallengesByUserId from './CompletedChallengesByuserId'
-import HeadingBlock from './BuildingBlocks/HeadingBlock'
 
 export function MyProfile() {
   const user = useUser().data
