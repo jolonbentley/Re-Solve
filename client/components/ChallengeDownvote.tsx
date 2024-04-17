@@ -46,13 +46,10 @@ export default function Downvote() {
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault()
     if (!check) {
-      console.log('new downvote recording')
       newDownvote.mutate()
     } else if (check.vote === -1) {
-      console.log('you already downvoted')
       return
     } else if (check.vote === 1) {
-      console.log('change to downvote')
       changeDownvote.mutate()
     }
   }

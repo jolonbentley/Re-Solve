@@ -15,8 +15,6 @@ export default function SolutionUpvote({ data }: DisplaySolution) {
   const solutionId = data.id
   const user = useUser().data
 
-  console.log('upvote', solutionId)
-
   const { data: check } = useQuery({
     queryKey: [`${solutionId}, ${user?.id} votecheck`],
     queryFn: () => checkSolutionVote(user?.id, solutionId),
@@ -50,13 +48,10 @@ export default function SolutionUpvote({ data }: DisplaySolution) {
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault()
     if (!check) {
-      console.log('new upvote recording')
       newUpvote.mutate()
     } else if (check.vote === 1) {
-      console.log('you already upvoted')
       return
     } else if (check.vote === -1) {
-      console.log('change to upvote')
       changeUpvote.mutate()
     }
   }

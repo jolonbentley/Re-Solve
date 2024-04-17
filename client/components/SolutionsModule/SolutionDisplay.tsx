@@ -4,7 +4,6 @@ import SolutionUpvote from '../SolutionUpvote'
 import SolutionDownvote from '../SolutionDownvote'
 
 export default function SolutionDisplay({ data }: DisplaySolution) {
-  console.log('data', data)
   return (
     <div className="mt-2">
       {data ? (
