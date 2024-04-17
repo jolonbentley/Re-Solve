@@ -27,8 +27,8 @@ export default function AvailableChallenges() {
     return (
       <div className="flex flex-col justify-center">
         <HeadingBlock>Available Challenges</HeadingBlock>
-        <span className="mb-4 mt-4 text-center">
-          <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+        <span className="mb-4 text-center">
+          <span className="loading loading-xs mx-auto animate-spin"></span>
         </span>
       </div>
     )
