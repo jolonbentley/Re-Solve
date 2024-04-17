@@ -51,7 +51,11 @@ export function SolutionDisBox() {
     return <h1>Error</h1>
   }
 
-  console.log(solutionDisBox)
+  const formatDate = (solution) => {
+    const jsDate = new Date(solutionDisBox[0].date)
+    const formattedDate = `${jsDate.getDate()}/${jsDate.getMonth()}/${jsDate.getFullYear()}`
+    return formattedDate
+  }
 
   return (
     <div>
@@ -78,8 +82,8 @@ export function SolutionDisBox() {
           <span className="text-lg font-bold">
             <Link to={`/profile/${solution.author_id}`}>{solution.name}</Link>
           </span>
+          <span className="text-lg font-bold">{formatDate(solution)}</span>
           <span className="text-lg font-bold">{solution.comment}</span>
-          <span className="text-lg font-bold">{solution.date}</span>
         </div>
       ))}
     </div>
