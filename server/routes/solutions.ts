@@ -26,10 +26,14 @@ router.get('/challengesolution/:id', async (req, res) => {
   }
 })
 
+
 router.get('/fix/:challengeId/:authorId', async (req, res) => {
   const {challengeId, authorId} = req.params
   try {
-    const solutions = await db.getSolutionByChallengeIdAndAuthorId(challengeId, authorId)
+    const solutions = await db.getSolutionByChallengeIdAndAuthorId(
+      challengeId,
+      authorId,
+    )
     res.json(solutions)
   } catch (error) {
     console.error(error)
@@ -82,7 +86,6 @@ router.get('/comments', async (req, res) => {
 
 router.get('/comments/:id', async (req, res) => {
   const id = parseInt(req.params.id)
-  console.log('i got hit')
   try {
     const comments = await db.getSolutionCommentsById(id)
     res.json(comments)

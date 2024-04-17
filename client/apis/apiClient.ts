@@ -21,15 +21,22 @@ export async function addSolutionDisBox(commentData: object) {
   return res.body as Solution
 }
 
-export async function getSolutionByChallengeIdAndAuthorId(challengeId: string, authorId: number | undefined) {
-  let authorIdToUse = ""
+export async function getSolutionByChallengeIdAndAuthorId(
+  challengeId: string,
+  authorId: number | undefined,
+) {
+  let authorIdToUse = ''
   if (authorId) {
     authorIdToUse = String(authorId)
+
   } 
   const res = await request
     .get(`${rootUrl}/solutions/fix/${challengeId}/${authorIdToUse}`)
+
+  }
+
   if (res.body == null || res.body == undefined) {
-    return {body: ""}
+    return { body: '' }
   }
   return res.body
 }
