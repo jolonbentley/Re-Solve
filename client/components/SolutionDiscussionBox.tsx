@@ -44,7 +44,9 @@ export function SolutionDisBox() {
   }
 
   if (isLoading) {
-    return <h1>Loading...SolutionDisBoxPage</h1>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
 
   if (isError || !solutionDisBox) {

@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getUserById } from '../apis/userAPI'
 import { CompletedChallengesByUserId } from './CompletedChallengesByuserId'
-import HeadingBlock from './BuildingBlocks/HeadingBlock'
 
 export function UserProfile() {
   // const user = useUser().data
@@ -19,7 +18,9 @@ export function UserProfile() {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
 
   if (isError) {

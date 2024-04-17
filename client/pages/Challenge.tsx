@@ -5,11 +5,6 @@ import ChallengeSandbox from '../components/ChallengeSandbox/ChallengeSandbox'
 import { useQuery } from '@tanstack/react-query'
 import { getChallenge } from '../apis/apiClient'
 import ChallengeContainer from '../components/BuildingBlocks/ChallengeContainer'
-import HeadingBlock from '../components/BuildingBlocks/HeadingBlock'
-import HeadingBlockSecondary from '../components/BuildingBlocks/HeadingBlockSecondary'
-import Downvote from '../components/ChallengeDownvote'
-import Upvote from '../components/ChallengeUpvote'
-import ChallengeUpvote from '../components/ChallengeUpvote'
 import HeadingBlockWithDate from '../components/BuildingBlocks/HeadingBlockWithDate'
 
 export default function Challenge() {
@@ -25,7 +20,7 @@ export default function Challenge() {
     queryFn: () => getChallenge(id),
   })
   if (isLoading) {
-    return <>Loading...</>
+    return <span className="loading loading-infinity loading-xs"></span>
   }
   if (isError) {
     return <div>There was an error, {String(error)}</div>
@@ -37,14 +32,16 @@ export default function Challenge() {
 
   return (
     <ChallengeContainer>
-      <HeadingBlockWithDate date={challenge.date}>Challenge: {challenge.title}</HeadingBlockWithDate>
+      <HeadingBlockWithDate date={challenge.date}>
+        Challenge: {challenge.title}
+      </HeadingBlockWithDate>
       <ChallengeBrief data={challenge} />
       <div className="flex flex-row justify-center">
-        <label className='text-center font-bold text-lg mb-2'>
+        <label className="mb-2 text-center text-lg font-bold">
           Enter your Solution
           <ChallengeSandbox code={code} />
-        </label> 
-        <label className='text-center font-bold text-lg mb-2'>
+        </label>
+        <label className="mb-2 text-center text-lg font-bold">
           Challenge Preview
           <ChallengeCode code={code} />
         </label>

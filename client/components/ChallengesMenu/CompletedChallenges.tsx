@@ -30,7 +30,7 @@ export default function CompletedChallenges() {
     return (
       <div className="flex flex-col justify-center">
         <HeadingBlock>Completed Challenges</HeadingBlock>
-        <span className="mt-4 text-center">Loading...</span>
+        <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
       </div>
     )
   }

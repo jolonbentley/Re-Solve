@@ -19,7 +19,9 @@ export function CompletedChallengesByUserId() {
   })
 
   if (isLoading) {
-    return <h1>Loading...ChallengesDataPage</h1>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
 
   if (isError || !completedChallenges) {

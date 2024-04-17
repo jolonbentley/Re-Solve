@@ -15,19 +15,21 @@ export default function Challenges() {
     queryFn: () => fetchChallenges(),
   })
   if (isLoading) {
-    return <h1>Loading...ChallengesDataPage</h1>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
 
   if (isError || !challengesData) {
     return <h1>Error</h1>
-  }  
-  
+  }
+
   return (
     <GenericContainer>
-      <HeadingBlock>
-        List of All Challenges
-      </HeadingBlock>
-      {challengesData?.map((challenge, index) => ( <ChallengeCard key={index} { ...challenge }/>))}
+      <HeadingBlock>List of All Challenges</HeadingBlock>
+      {challengesData?.map((challenge, index) => (
+        <ChallengeCard key={index} {...challenge} />
+      ))}
     </GenericContainer>
   )
 }
