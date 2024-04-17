@@ -53,15 +53,17 @@ export default function SandboxEditor() {
       <div>
         <Editor
           height="50vh"
-          width="30rem"
+          width="31rem"
           theme="vs-dark"
           defaultLanguage="typescript"
           value={solution.data.body}
           onChange={(value) => setEditorCode(value)}
+          
           onMount={onMount}
           options={{
             fontSize: 16,
             contextmenu: true,
+            minimap: {enabled: false}
           }}
         />
       </div>

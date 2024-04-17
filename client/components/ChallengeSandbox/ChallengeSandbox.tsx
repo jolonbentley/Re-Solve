@@ -4,7 +4,7 @@ export default function ChallengeSandbox() {
 
   return (
     <div>
-      <div style={{ width: '500px', height: '800px' }}>
+      <div className='h-auto w-auto'>
         <SandboxEditor />
       </div>
     </div>
