@@ -1,14 +1,14 @@
-import { useQuery } from "@tanstack/react-query"
-import { getChallenge } from "../../apis/apiClient"
-import HeadingBlock from "../BuildingBlocks/HeadingBlock"
-import ChallengeBrief from "../ChallengesMenu/ChallengeBrief"
-import PreviewCodebox from "./PreviewCodebox"
+import { useQuery } from '@tanstack/react-query'
+import { getChallenge } from '../../apis/apiClient'
+import HeadingBlock from '../BuildingBlocks/HeadingBlock'
+import ChallengeBrief from '../ChallengesMenu/ChallengeBrief'
+import PreviewCodebox from './PreviewCodebox'
 
 interface Id {
   id: number
 }
 
-export default function ChallengePreview( {id}: Id) {
+export default function ChallengePreview({ id }: Id) {
   // Get challenge information
   const {
     isLoading,
@@ -20,7 +20,9 @@ export default function ChallengePreview( {id}: Id) {
     queryFn: () => getChallenge(id),
   })
   if (isLoading) {
-    return <>Loading...</>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
   if (isError) {
     return <div>There was an error, {String(error)}</div>
@@ -31,10 +33,12 @@ export default function ChallengePreview( {id}: Id) {
   const code = challenge.problem
 
   return (
-    <div className="rounded-md border-solid mb-4">
+    <div className="mb-4 rounded-md border-solid">
       <HeadingBlock>{challenge.title}</HeadingBlock>
       <ChallengeBrief data={challenge}></ChallengeBrief>
-      <div className="flex justify-center"><PreviewCodebox code={code} /></div>
+      <div className="flex justify-center">
+        <PreviewCodebox code={code} />
+      </div>
     </div>
   )
 }

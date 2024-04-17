@@ -21,7 +21,9 @@ export default function SolutionsModule({ id }: Id) {
     queryFn: () => getChallengeSolutions(id),
   })
   if (isLoading) {
-    return <>Loading...</>
+    return (
+      <span className="loading loading-xs mx-auto mt-4 animate-spin"></span>
+    )
   }
   if (isError) {
     return <div>There was an error, {String(error)}</div>
