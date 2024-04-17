@@ -4,7 +4,7 @@ import { Editor } from '@monaco-editor/react'
 import useUser from '../../hooks/useUser'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { submitSolution } from '../../apis/apiClient'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export default function SandboxConsole({ editorRef }) {
   const [output, setOutput] = useState(null)
@@ -28,7 +28,6 @@ export default function SandboxConsole({ editorRef }) {
     mutationFn: (data) => submitSolution(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['solutions'] })
-      console.log('challenge submitted')
       window.location.href = `/solution/${id}`
     },
     onError: (error) => {
@@ -67,12 +66,25 @@ export default function SandboxConsole({ editorRef }) {
           }}
         />
       </div>
-      <button className="btn" onClick={runCode}>
-        Run Code
-      </button>
-      <button className="btn" onClick={submitCode}>
-        Submit Code
-      </button>
+      <div className="flex">
+        <button
+          className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+          onClick={submitCode}
+        >
+          Submit Code
+        </button>
+        <button
+          className="btn text-secondary-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
+          onClick={runCode}
+        >
+          Test Code
+        </button>
+        <Link to={`/solution/${id}`}>
+          <button className="btn text-secondary-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400">
+            Jump to Solution
+          </button>
+        </Link>
+      </div>
     </div>
   )
 }
