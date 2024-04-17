@@ -15,7 +15,7 @@ export default function SolutionCard(props: Props) {
   const formattedDate = `${jsDate.getDate()}/${jsDate.getMonth()}/${jsDate.getFullYear()}`
 
   return (
-    <div className="my-2 mr-2 grid grid-cols-4 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl">
+    <div className="my-2 mr-2 flex-1 grid grid-cols-4 items-center justify-items-center rounded-2xl bg-secondary p-4 text-center text-secondary-content drop-shadow-md transition-all duration-300 hover:bg-accent hover:text-accent-content hover:drop-shadow-xl">
       <span className="text-lg font-bold">{author}</span>
       <span>
         <span className="text-lg font-bold">{upvotes}</span>{' '}

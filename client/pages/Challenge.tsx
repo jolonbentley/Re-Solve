@@ -36,7 +36,7 @@ export default function Challenge() {
         Challenge: {challenge.title}
       </HeadingBlockWithDate>
       <ChallengeBrief data={challenge} />
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row justify-center gap-2">
         <label className="mb-2 text-center text-lg font-bold">
           Enter your Solution
           <ChallengeSandbox code={code} />

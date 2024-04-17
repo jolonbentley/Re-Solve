@@ -9,7 +9,7 @@ export default function ChallengeCodebox({ code }: ChallengeCode) {
       <div>
         <Editor
           height="50vh"
-          width="30rem"
+          width="31rem"
           theme="vs-dark"
           defaultLanguage="typescript"
           value={`//Re:Solve the problematic code below\n${code}`}

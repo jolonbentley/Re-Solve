@@ -52,7 +52,7 @@ export default function SandboxConsole({ editorRef }) {
       <div>
         <Editor
           height="20vh"
-          width="30rem"
+          width="31rem"
           theme="vs-dark"
           defaultLanguage="Markdown"
           value={
@@ -63,10 +63,11 @@ export default function SandboxConsole({ editorRef }) {
             contextmenu: true,
             readOnly: true,
             domReadOnly: true,
+            minimap: {enabled: false}
           }}
         />
       </div>
-      <div className="flex">
+      <div className="flex mt-2 gap-1 ml-2">
         <button
           className="btn bg-accent text-accent-content drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bg-gray-400"
           onClick={submitCode}
