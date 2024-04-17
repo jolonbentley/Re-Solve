@@ -150,6 +150,8 @@ input {
 /* Footer container */
 .footer {
   background-color: rgb(23 23 23);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 20px;
   border-top: 1px solid #e0e0e0;
   position: relative;
@@ -179,9 +181,16 @@ input {
   font-weight: bold;
 }
 
+.footer-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+}
+
 /* Footer text */
 .footer-text {
-  margin-top: 20px;
   text-align: center;
 }
 
