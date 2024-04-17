@@ -32,9 +32,6 @@ export async function getSolutionByChallengeIdAndAuthorId(
   } 
   const res = await request
     .get(`${rootUrl}/solutions/fix/${challengeId}/${authorIdToUse}`)
-
-  }
-
   if (res.body == null || res.body == undefined) {
     return { body: '' }
   }
