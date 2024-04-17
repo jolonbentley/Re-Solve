@@ -1,11 +1,11 @@
 import SandboxEditor from './SandboxEditor'
-import { ChallengeCode } from '../../../models/challenges'
 
-export default function ChallengeSandbox({ code }: ChallengeCode) {
+export default function ChallengeSandbox() {
+
   return (
     <div>
-      <div style={{ width: '500px', height: '800px', border: 'solid' }}>
-        <SandboxEditor code={code} />
+      <div style={{ width: '500px', height: '800px' }}>
+        <SandboxEditor />
       </div>
     </div>
   )
